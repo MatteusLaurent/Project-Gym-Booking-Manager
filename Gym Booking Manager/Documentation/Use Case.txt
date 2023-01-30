@@ -1,0 +1,70 @@
+# Created with 'Text Tables' extension for VS Code.
+
+| Name                | Actor(s) | Description                                                 |
+| ------------------- | -------- | ----------------------------------------------------------- |
+| View Log            | Admin    | (optional) Admin can access an activity log that will       |
+|                     |          | contain info on data updates in the system.                 |
+|                     |          | Log(login, activity, oldData?, newData)                     |
+|                     |          |                                                             |
+| View Group Schedule | Staff    | Display data for the open group schedule. Anyone can        |
+|                     | Customer | access the schedule, but certain fields may be              |
+|                     |          | anonymous to low access level-users.                        |
+|                     |          |                                                             |
+| Update Group Schdl  | Staff    | Add/change/remove activities from the open group schedule.  |
+|                     |          | This may impact signups, and should then push               |
+|                     |          | a notification to all affected users (customers and         |
+|                     |          | trainers). Some reservable resources can also be impacted.  |
+|                     |          |                                                             |
+| View Item           | Staff    | Display reservation data regarding a particular item.       |
+|                     | Customer | Items include space (halls/lanes/rooms), equipment,         |
+|                     |          | staff (coach, PT). Although customers should not have       |
+|                     |          | full access to item time table, they may need               |
+|                     |          | availability information indirectly.                        |
+|                     |          |                                                             |
+| Make Reservation    | Staff    | Reserve some thing for a timeslot. Some items have          |
+|                     | Customer | associated fees, for which any customer can book.           |
+|                     |          | Some items do not, and thus instead require                 |
+|                     |          | a membership or day pass instead (with some additional      |
+|                     |          | limitations imposed). Staff may also reserve items for      |
+|                     |          | group activities. TODO: How general is a reservation; the   |
+|                     |          | reservable and the reserving entity?                        |
+|                     |          |                                                             |
+| Cancel Reservation  | Staff    | A customer can cancel any of their reservations.            |
+|                     | Customer | Staff can also cancel on behalf of customers.               |
+|                     |          | This may include some special processing, e.g. partial      |
+|                     |          | fee reimbursement. This can affect a group activity,        |
+|                     |          | thus requiring special handling.                            |
+|                     |          | In either case, a notification of the cancellation          |
+|                     |          | should be pushed.                                           |
+|                     |          |                                                             |
+| Purchase Day Pass   | Staff    | Day Pass purchase. This will (TODO: temporarily)            |
+|                     | Customer | elevate a non-paying customer's status to paying.           |
+|                     |          | It may be prudent to consider this status as distinct       |
+|                     |          | from "member", although functionally they will enjoy        |
+|                     |          | the same privileges, albeit under time restriction.         |
+|                     |          | For simplicity's sake, day pass can currently only be       |
+|                     |          | purchased for the current day.                              |
+|                     |          |                                                             |
+| Purchase Membership | Staff    | Membership purchase. Elevates a customer's status to        |
+|                     | Customer | "member".                                                   |
+|                     |          |                                                             |
+| Restrict Item       | Staff    | Some items can be marked as restricted. This disables all   |
+|                     |          | reservation for the item in question until resolved.        |
+|                     |          | Some examples: A hall can be made "unavailable" due to      |
+|                     |          | renovations; a gym machine can be marked for "repair"       |
+|                     |          | after inspection.                                           |
+|                     |          |                                                             |
+| Item Repair         | Service  | Service workers can clear item restrictions as part of      |
+|                     |          | finishing their maintenance.                                |
+|                     |          |                                                             |
+| Add User            | Staff    | Staff can add new users to the system. Perhaps with options |
+|                     |          | for specifying customer or type of non-customer             |
+|                     |          | (other staff, service workers, etc.)                        |
+|                     |          |                                                             |
+| Delete User         | Staff    | Self-explanatory complement to above.                       |
+|                     |          | user details.                                               |
+|                     |          |                                                             |
+| Change User Details | User?    | (optional) A user may want to be able to change their own   |
+|                     |          | user details.                                               |
+|                     |          |                                                             |
+| ------------------- | -------- | ----------------------------------------------------------- |
