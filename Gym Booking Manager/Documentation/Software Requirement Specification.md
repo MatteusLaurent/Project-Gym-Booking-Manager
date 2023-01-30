@@ -52,7 +52,7 @@ Group Schedule
     - Once the entry is in the schedule, paying customers can sign up, reserving their spot.
 
 Reservations
-- Customer reservations can be made both at the reception (in-person and via phone) or online. **_Note that at this stage we're making the core of the management system. It will be tested in the terminal with a simple command-line interface, CLI._** *#TODO to be elaborated upon*
+- ~~Customer reservations can be made both at the reception (in-person and via phone) or online.~~ **_Note that at this stage we're making the core of the management system. A prototype to run in the terminal with a simple command-line interface, CLI._**
 - Staff can make reservations on behalf of customers.
 - Staff can change existing reservations.
     - When this affects customers (e.g. cancellation), send [impacted users](#us-3) a text message notification on their registered phone number (**NOTE:** Creating a local file log entry is sufficient for the prototype).
