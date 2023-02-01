@@ -17,9 +17,13 @@ namespace Gym_Booking_Manager
     //
     // The current database class implementation uses SortedSet, and thus classes and objects that we want to store
     // in it should inherit the IComparable<T> interface.
+    //
+    // As alluded to from previous paragraphs, implementing IComparable<T> is not exhaustive to cover all "comparisons".
+    // Refer to official C# documentation to determine what interface to implement to allow use with
+    // the class/method/operator that you want.
     internal class Space : IReservable, ICSVable, IComparable<Space> 
     {
-        private static readonly List<Tuple<Category, int>> hourlyCosts = InitializeHourlyCosts(); // Costs may not be relevant for the prototype. Let's see what the time allows.
+        //private static readonly List<Tuple<Category, int>> hourlyCosts = InitializeHourlyCosts(); // Costs may not be relevant for the prototype. Let's see what the time allows.
         private Category category;
         private String name;
         private readonly Calendar calendar;
@@ -92,17 +96,20 @@ namespace Gym_Booking_Manager
 
         }
 
-        private static List<Tuple<Category, int>> InitializeHourlyCosts()
-        {
-            // TODO: fetch from "database"
-            var hourlyCosts = new List<Tuple<Category, int>>
-            {
-                Tuple.Create(Category.Hall, 500),
-                Tuple.Create(Category.Lane, 100),
-                Tuple.Create(Category.Studio, 400)
-            };
-            return hourlyCosts;
-        }
+        // Consider how and when to add a new Space to the database.
+        // Maybe define a method to persist it? Any other reasonable schemes?
+
+        //private static List<Tuple<Category, int>> InitializeHourlyCosts()
+        //{
+        //    // TODO: fetch from "database"
+        //    var hourlyCosts = new List<Tuple<Category, int>>
+        //    {
+        //        Tuple.Create(Category.Hall, 500),
+        //        Tuple.Create(Category.Lane, 100),
+        //        Tuple.Create(Category.Studio, 400)
+        //    };
+        //    return hourlyCosts;
+        //}
 
     }
 }

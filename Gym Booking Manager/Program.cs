@@ -1,12 +1,18 @@
-﻿// See https://aka.ms/new-console-template for more information
-using Gym_Booking_Manager;
+﻿using Gym_Booking_Manager;
+using System.Runtime.CompilerServices;
 
-internal class Program
+#if DEBUG
+[assembly: InternalsVisibleTo("Tests")]
+#endif
+namespace Gym_Booking_Manager
 {
-    static void Main(string[] args)
+    internal class Program
     {
-        User userContext;
-    }
+        static void Main(string[] args)
+        {
+            User userContext;
+        }
 
-    // Static methods for the program
+        // Static methods for the program
+    }
 }

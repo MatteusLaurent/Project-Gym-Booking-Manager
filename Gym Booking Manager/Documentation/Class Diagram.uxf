@@ -1,8 +1,8 @@
-<diagram program="umletino" version="15.0.0"><zoom_level>6</zoom_level><help_text>Reservation</help_text><element><id>UMLClass</id><coordinates><x>152</x><y>566</y><w>132</w><h>48</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
+<diagram program="umletino" version="15.0.0"><zoom_level>10</zoom_level><help_text>Reservation</help_text><element><id>UMLClass</id><coordinates><x>200</x><y>740</y><w>220</w><h>80</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
 IServicable
 
 --
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>404</x><y>752</y><w>60</w><h>90</h></coordinates><panel_attributes>/User/
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>620</x><y>1050</y><w>100</w><h>150</h></coordinates><panel_attributes>/User/
 
 --
 -uniqueID
@@ -11,7 +11,7 @@ IServicable
 -email : string
 
 --
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>650</x><y>752</y><w>240</w><h>84</h></coordinates><panel_attributes>GroupSchedule
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1030</x><y>1050</y><w>400</w><h>140</h></coordinates><panel_attributes>GroupSchedule
 
 --
 -activities : List&lt;GroupActivity&gt;
@@ -21,26 +21,27 @@ IServicable
 +AddActivity(in author : User, in activityDetails : ??)
 +UpdateActivity(in author : User, in activityID : ??, in activityDetails : ??)
 +RemoveActivity(in author : User, in activityID : ??)
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>308</x><y>608</y><w>222</w><h>84</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>460</x><y>810</y><w>370</w><h>140</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
 IReservable
 
 --
 +MakeReservation(in timeSlot : DateTime, in reservingEntity ??)
 +CancelReservation(in timeSlot : Time, in actor ??) ?
 +ViewTimeTable(in observer : User)
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>422</x><y>836</y><w>18</w><h>78</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;110</additional_attributes></element><element><id>UMLUseCase</id><coordinates><x>206</x><y>788</y><w>72</w><h>132</h></coordinates><panel_attributes>Reserving Entities
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>650</x><y>1190</y><w>30</w><h>130</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;110</additional_attributes></element><element><id>UMLUseCase</id><coordinates><x>290</x><y>1110</y><w>120</w><h>220</h></coordinates><panel_attributes>Reserving Entities
 
 /Customer/
 /Group Activity/
-/Staff/</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLUseCase</id><coordinates><x>200</x><y>638</y><w>84</w><h>132</h></coordinates><panel_attributes>Reservables
+/Staff/</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLUseCase</id><coordinates><x>280</x><y>860</y><w>140</w><h>240</h></coordinates><panel_attributes>Reservables
 
 /Space/
 /- Hall/
 /- Lane/
+/- Studio/
 /Equipment/
 /P.Trainer/
-/Group Activity Slot ??/</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>32</x><y>728</y><w>162</w><h>18</h></coordinates><panel_attributes>Is a slot for a group activity a Reservable?
-bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>338</x><y>452</y><w>84</w><h>78</h></coordinates><panel_attributes>Space
+/Group Activity Slot ??/</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>0</x><y>1030</y><w>270</w><h>30</h></coordinates><panel_attributes>Is a slot for a group activity a Reservable?
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>510</x><y>550</y><w>140</w><h>130</h></coordinates><panel_attributes>Space
 
 --
 -name : String
@@ -48,7 +49,7 @@ bg=blue</panel_attributes><additional_attributes></additional_attributes></eleme
 -calendar : Calendar
 
 --
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>212</x><y>524</y><w>138</w><h>54</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;70;210;10</additional_attributes></element><element><id>Relation</id><coordinates><x>374</x><y>524</y><w>60</w><h>96</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>80;140;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>494</x><y>740</y><w>126</w><h>126</h></coordinates><panel_attributes>GroupActivity
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>300</x><y>670</y><w>230</w><h>90</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;70;210;10</additional_attributes></element><element><id>Relation</id><coordinates><x>570</x><y>670</y><w>100</w><h>160</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>80;140;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>770</x><y>1030</y><w>210</w><h>210</h></coordinates><panel_attributes>GroupActivity
 
 --
 -activityID
@@ -61,35 +62,35 @@ bg=blue</panel_attributes><additional_attributes></additional_attributes></eleme
 
 --
 +SignUp(in participant : ??) 
-+Modify(in activityDetails)</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>614</x><y>788</y><w>48</w><h>18</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>60;10;10;10</additional_attributes></element><element><id>UMLNote</id><coordinates><x>662</x><y>698</y><w>186</w><h>42</h></coordinates><panel_attributes>Note that activities can have temporal overlap
++Modify(in activityDetails)</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>970</x><y>1110</y><w>80</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>60;10;10;10</additional_attributes></element><element><id>UMLNote</id><coordinates><x>1050</x><y>960</y><w>310</w><h>70</h></coordinates><panel_attributes>Note that activities can have temporal overlap
 in the Group Schedule, as long as there is
 no conflict on part of Staff, Space, and Equipment
 (which all have separate time tables).
-bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>308</x><y>374</y><w>144</w><h>48</h></coordinates><panel_attributes>Calendar
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>460</x><y>420</y><w>240</w><h>80</h></coordinates><panel_attributes>Calendar
 --
 -reservations : List&lt;Reservation&gt;
---</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>374</x><y>416</y><w>18</w><h>48</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;60;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>320</x><y>278</y><w>120</w><h>48</h></coordinates><panel_attributes>Reservation
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>570</x><y>490</y><w>30</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;60;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>480</x><y>260</y><w>200</w><h>80</h></coordinates><panel_attributes>Reservation
 --
 -owner : readonly ReservingEntity
 -timeSlot : readonly DateTime
 --
-</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>374</x><y>320</y><w>24</w><h>66</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>570</x><y>330</y><w>40</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
 m1=1
-m2=*</panel_attributes><additional_attributes>10;90;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>236</x><y>452</y><w>60</w><h>60</h></coordinates><panel_attributes>&lt;&lt;enumeration&gt;&gt;
+m2=*</panel_attributes><additional_attributes>10;90;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>340</x><y>550</y><w>100</w><h>100</h></coordinates><panel_attributes>&lt;&lt;enumeration&gt;&gt;
 Category
 --
 Hall
 Lane
-Sutdio</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>290</x><y>482</y><w>60</w><h>18</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>80;10;10;10</additional_attributes></element><element><id>UMLPackage</id><coordinates><x>470</x><y>122</y><w>360</w><h>402</h></coordinates><panel_attributes>Database
+Studio</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>430</x><y>600</y><w>100</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>80;10;10;10</additional_attributes></element><element><id>UMLPackage</id><coordinates><x>730</x><y>0</y><w>600</w><h>670</h></coordinates><panel_attributes>Database
 --
 bg=orange
-transparency=80</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>692</x><y>164</y><w>120</w><h>66</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
+transparency=80</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1100</x><y>70</y><w>200</w><h>110</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
 IDatabase
 --
 +Create
 +Read
 +Update
-+Delete</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>686</x><y>272</y><w>132</w><h>102</h></coordinates><panel_attributes>LocalStorage (DatabaseManager)
++Delete</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1090</x><y>250</y><w>220</w><h>170</h></coordinates><panel_attributes>LocalStorage (DatabaseManager)
 --
 -spaces : DbSet&lt;Space&gt;
 - ?? : DbSet&lt;??&gt;
@@ -99,7 +100,7 @@ IDatabase
 +Create
 +Read
 +Update
-+Delete</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>482</x><y>164</y><w>174</w><h>78</h></coordinates><panel_attributes>GymDatabaseContext
++Delete</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>750</x><y>70</y><w>290</w><h>130</h></coordinates><panel_attributes>GymDatabaseContext
 
 --
 -dbImplementaion : IDatabase
@@ -107,7 +108,7 @@ IDatabase
 +Create&lt;T&gt;(entity : T) : bool
 +Read&lt;T&gt;(field : String?, value : String?) : List&lt;T&gt;
 +Update&lt;T&gt;(newEntity : T, oldEntity : T) : bool
-+Delete&lt;T&gt;(entity : T) : bool</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>746</x><y>224</y><w>18</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;80</additional_attributes></element><element><id>Relation</id><coordinates><x>650</x><y>194</y><w>54</w><h>18</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;70;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>704</x><y>422</y><w>96</w><h>78</h></coordinates><panel_attributes>DbSet&lt;T&gt;
++Delete&lt;T&gt;(entity : T) : bool</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1190</x><y>170</y><w>30</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;80</additional_attributes></element><element><id>Relation</id><coordinates><x>1030</x><y>120</y><w>90</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;70;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1120</x><y>500</y><w>160</w><h>130</h></coordinates><panel_attributes>DbSet&lt;T&gt;
 --
 -dataFile : String
 -entities : SortedSet&lt;T&gt;
@@ -115,10 +116,10 @@ IDatabase
 +create
 +read
 +update
-+delete</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>746</x><y>368</y><w>24</w><h>66</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
++delete</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1190</x><y>410</y><w>40</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
 m1=1
-m2=*</panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element><element><id>UMLClass</id><coordinates><x>710</x><y>578</y><w>72</w><h>48</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
+m2=*</panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1130</x><y>760</y><w>120</w><h>80</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
 ICSVable
 
 --
-+CSVify()</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>416</x><y>524</y><w>306</w><h>66</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>490;90;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>734</x><y>494</y><w>30</w><h>90</h></coordinates><panel_attributes>lt=)-</panel_attributes><additional_attributes>20;120;30;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>152</x><y>146</y><w>126</w><h>114</h></coordinates><panel_attributes>Program</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>272</x><y>176</y><w>222</w><h>18</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;350;10</additional_attributes></element></diagram>
++CSVify()</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>640</x><y>670</y><w>510</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>490;90;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1170</x><y>620</y><w>50</w><h>150</h></coordinates><panel_attributes>lt=)-</panel_attributes><additional_attributes>20;120;30;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>200</x><y>40</y><w>210</w><h>190</h></coordinates><panel_attributes>Program</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>400</x><y>90</y><w>370</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;350;10</additional_attributes></element></diagram>

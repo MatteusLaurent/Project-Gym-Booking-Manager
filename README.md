@@ -22,7 +22,7 @@ Skapa en [förgrening](https://docs.github.com/en/get-started/quickstart/fork-a-
 - En Visual Studio solution (lösning) som utgörs av två projektkataloger: **Gym Booking Manager** och **Tests**.
     - **Gym Booking Manager**: Huvudprojektet. Notera underkatalogen **Documentation**.
         - **Documentation**: Innehåller [kravspecifikation](https://github.com/MatteusLaurent/Project-Gym-Booking-Manager/blob/master/Gym%20Booking%20Manager/Documentation/Software%20Requirement%20Specification.md), och diverse (o)fullständiga UML-diagram. Notera att .md (Markdown) och .uxf (UML eXchange Format) i Visual Studio endast öppnas som råtext. Se [verktyg](#verktyg).
-    - **Tests**: Två kategorier: Unit-tester som testar klasser & tester som testar static-metoder i main-programmet (systemövergripande funktionalitet).
+    - **Tests**: Två kategorier: Unit-tester som testar klassers interna logik & tester som testar mer systemövergripande funktionalitet.
 - <a id="dl-gs"></a>Ett gränssnitt för datalagring: `GymDatabaseContext`. Den har en underliggande implementation som använder lagring med lokala filer.
 
 
@@ -43,7 +43,9 @@ När ni känner att era diagram har tagit form kan ni börja koda. Notera att vi
 - En enkel användarkontext utan fullständig inloggning.
 - En enkel programloop där användaren kan välja mellan olika alternativ som ungefär reflekterar Use Cases; användarkontexten begränsar möjligheterna.
 - Data och information hämtas/lagras/uppdateras, under och mellan programkörningar, genom [datalagringsgränssnittet](#dl-gs).
-- Testprojektet förväntar sig vissa funktioner (static-metoder) i programklassen som ska kunna köras utan fel.
+
+Tester:
+- Testprojektet antar viss funktionalitet. Fixa existerande tester så att de funkar att köra och kan testa programmet.
 
 Sammanfattade mål:
 - En samling UML-diagram som guidar er design samt ger en grov överblick av programmet.
@@ -52,7 +54,7 @@ Sammanfattade mål:
 ## Extrauppgifter
 Om man blir "klar" tidigt (eller om man vill jobba vidare efter projektet) så finns det många saker man skulle kunna kika på. Del av uppgiften är [genomförandet](#genomförande), så ni bör nyttja tiden som är disponerad för projektet. Några exempel för extrauppgifter:
 - Inloggning utöver användarnamn. 
-- Utöka testprojektet med egna isolerade tester för era klasser (Unit Testing).
+- Utöka testprojektet med korta isolerade tester för era klassers metoder (Unit Testing).
 - Optional Functional Requirements från kravspecifikationen.
 - Analys (börja kanske med lämpligt UML-diagram) av "databas"-implementationen. Försök sen svara på vissa lösa frågor:
     - Utförs onödigt arbete?
@@ -90,9 +92,9 @@ Möten: **Zoom** för live-/standup-möten.
 ## Bedömning
 Överrensstämmelsen mellan design (dokumenten) och implementation (koden) är i fokus. För koden görs en bedömning utifrån principerna för OOP.
 
-**G:** Har jobbat enligt [genomförande](#genomförande) för att uppfylla punkterna i [Uppgift](#uppgift)-sektionen. Rimliga OOP-principer har applicerats i design och implementation. Koden är skriven för att klara  testerna.
+**G:** Har jobbat enligt [genomförande](#genomförande) för att uppfylla punkterna i [Uppgift](#uppgift)-sektionen. Rimliga OOP-principer har applicerats i design och implementation.
 
-**VG:** Har inkluderat både sekvens- och aktivitets-diagram. OOP-principer har applicerats med gott omdöme i samtliga delar av design och implementation och påvisar särskild förståelse för området. Har utökat testprojektet med rimliga unit-tester för skrivna klasser. 
+**VG:** Har inkluderat både sekvens- och aktivitets-diagram. OOP-principer har applicerats med gott omdöme i samtliga delar av design och implementation och påvisar särskild förståelse för området. Har utökat testprojektet med rimliga unit-tester för de skrivna klasserna, samt ett par tester som testar mer övergripande programförlopp. 
 
 
 ## Vad ska lämnas in?
