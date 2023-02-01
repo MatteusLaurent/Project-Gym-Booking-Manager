@@ -18,7 +18,7 @@ Att notera är att arbetet redan har påbörjats, men uppgiften har nu överlåt
 Hela kravspecifikationen hittar ni [här](https://github.com/MatteusLaurent/Project-Gym-Booking-Manager/blob/master/Gym%20Booking%20Manager/Documentation/Software%20Requirement%20Specification.md).
 
 ## Givna diagram och kod
-Skapa en [förgrening](https://docs.github.com/en/get-started/quickstart/fork-a-repo) av följande [Git-repo](https://github.com/MatteusLaurent/Project-Gym-Booking-Manager). Repo:t innehåller en hastigt utförd start av tidigare projektansvariga, skriven innan projektet nu har vidarelämnats till er. Bekanta er med innehållet. Sammanfattning av medföljande:
+Skapa en [förgrening](https://docs.github.com/en/get-started/quickstart/fork-a-repo) (med **private**-åtkomst) av följande [Git-repo](https://github.com/MatteusLaurent/Project-Gym-Booking-Manager). Repo:t innehåller en hastigt utförd start av tidigare projektansvariga, skriven innan projektet nu har vidarelämnats till er. Bekanta er med innehållet. Sammanfattning av medföljande:
 - En Visual Studio solution (lösning) som utgörs av två projektkataloger: **Gym Booking Manager** och **Tests**.
     - **Gym Booking Manager**: Huvudprojektet. Notera underkatalogen **Documentation**.
         - **Documentation**: Innehåller [kravspecifikation](https://github.com/MatteusLaurent/Project-Gym-Booking-Manager/blob/master/Gym%20Booking%20Manager/Documentation/Software%20Requirement%20Specification.md), och diverse (o)fullständiga UML-diagram. Notera att .md (Markdown) och .uxf (UML eXchange Format) i Visual Studio endast öppnas som råtext. Se [verktyg](#verktyg).
@@ -32,9 +32,9 @@ Studera kravspecifikationen samt existerande UML-diagram och kod.
 
 Fixa och vidareutveckla diagrammen:
  - Use Case diagram med text-beskrivningar.
-     - Lägg till Scenario-beskrivning för minst *x* Use Case:s. *Hur många?*
+     - Lägg till Scenario-beskrivning för minst tre Use Case:s.
  - Klassdiagram. 
- - Aktivitetsdiagram eller sekvensdiagram. *Hur många?*
+ - Skapa ett aktivitetsdiagram eller sekvensdiagram för en lämplig aspekt av systemet.
 
 Notera att diagramskapande är en inledande och en iterativ process. Det måste inte bli rätt från början, och saker kan komma att ändras när ni börjar koda. **Uppdatera även era diagram allteftersom och försök att skapa så stor överrensstämmelse som möjligt mellan kod och dokumentation.**
 
@@ -43,7 +43,7 @@ När ni känner att era diagram har tagit form kan ni börja koda. Notera att vi
 - En enkel användarkontext utan fullständig inloggning.
 - En enkel programloop där användaren kan välja mellan olika alternativ som ungefär reflekterar Use Cases; användarkontexten begränsar möjligheterna.
 - Data och information hämtas/lagras/uppdateras, under och mellan programkörningar, genom [datalagringsgränssnittet](#dl-gs).
-- Testprojektet förväntar sig vissa funktioner (static-metoder) i programklassen som ska kunna köras utan fel. *Ifyllning av testerna? Får de ändra testerna?*
+- Testprojektet förväntar sig vissa funktioner (static-metoder) i programklassen som ska kunna köras utan fel.
 
 Sammanfattade mål:
 - En samling UML-diagram som guidar er design samt ger en grov överblick av programmet.
@@ -67,12 +67,12 @@ Att få träna på OOP-analys, -design, och -implementation i grupp. Ytterligare
 ## Genomförande
 - Ni är fyra till fem teammedlemmar som ska vidare-designa och -utveckla en prototyp utifrån specifikationen inom två veckors tid. Till er hjälp (och hinder) har ni det givna kodskelettet med inkluderad dokumentation.
 - Använd Agil projektmetod.
-    - Daily-scrum i början på dagen där läraren bjuds in.
-    - Retrospective-möte i slutet på dagen utan läraren. Summera även dagens aktiviteter i en **personlig** dagbok.
     - Utse roterande rollerna mötesansvarig och Scrum Master. Mötesansvarig schemalägger och kallar till Zoom-möte.
+    - Daily-scrum i början på dagen där läraren bjuds in (se [schema](http://moodle.molk.se/mod/page/view.php?id=4087) på moodle).
+    - Retrospective-möte i slutet på dagen utan läraren.
+    - Reflektera och summera dagens aktiviteter i en personlig dagbok (~5 minuter).
+    - Sista dagen, spendera gärna lite extra tid på mötet och dagboksskrivandet. En sorts post-mortem reflektion.
 - **Tips:** Se till att ni skapar en gemensam helhetsbild av projektet under diagramprocessen. Ni kan då skapa tasks (vi jobbar agilt!) och fördela arbetsbördan på ett dynamiskt och smart sätt. Kommunikation är viktig under hela resan.
-
-
 
 ## Verktyg
 Kod:  **Visual Studio 2022**.
@@ -87,17 +87,16 @@ Sprintplanering/Scrumboard: **Trello / Jira / Clubhouse** eller liknande.
 
 Möten: **Zoom** för live-/standup-möten.
 
-Dagboksföring: *??*
-
-
-
 ## Bedömning
-Överrensstmmelsen mellan design (dokumenten) och implementation (koden) är i fokus. För koden görs en bedömning utifrån principerna för OOP. Koden ska klara av de givna testerna *(?)*.
+Överrensstämmelsen mellan design (dokumenten) och implementation (koden) är i fokus. För koden görs en bedömning utifrån principerna för OOP.
 
-*VG/G/IG?* ges som betyg på uppgiften.
+**G:** Har jobbat enligt [genomförande](#genomförande) för att uppfylla punkterna i [Uppgift](#uppgift)-sektionen. Rimliga OOP-principer har applicerats i design och implementation. Koden är skriven för att klara  testerna.
+
+**VG:** Har inkluderat både sekvens- och aktivitets-diagram. OOP-principer har applicerats med gott omdöme i samtliga delar av design och implementation och påvisar särskild förståelse fär området. Har utökat testprojektet med rimliga unit-tester för skrivna klasser. 
+
 
 ## Vad ska lämnas in?
-När ni har skapat er förgrening av Git-repo:t, inkludera *mig* som Collaborator. Använd Git-systemet när ni jobbar, så att er kod och era diagram finns uppdaterade på ert repo. Egna UML-diagram som ni skapar ska ligga i underkatalogen **Gym Booking Manager/Documentation/**.
+När ni har skapat er förgrening av Git-repo:t, inkludera **MatteusLaurent** och **TonyAtMolk** som Collaborator:s. Använd Git-systemet när ni jobbar, så att er kod och era diagram finns uppdaterade på ert repo. Egna UML-diagram som ni skapar ska ligga i underkatalogen **Gym Booking Manager/Documentation/**.
 
 För slutinlämning skapar ni ett zip-arkiv utav repo:ts master branch (på GitHub: Gröna knappen 'Code' -> 'Download ZIP').
 
@@ -113,19 +112,3 @@ Enligt ovan sektion, ni skapar ett zip-arkiv av ert projekt, förslagsvis direkt
 Exempel:
 
 **MJU22_OPC_Projekt_01_Grp6.zip**
-
-
-*public vs private fork?*
-
-*dagbok?*
-
-*mig: who?*
-
-*inlämningstid?*
-
-*genomförande?*
-
-*G: Spenderat tiden enligt **Uppgift** specifikation och applicerat OOP-principer i design och implementation*
-*VG: Egna Unit-tester för klasserna + ?*
-
-*testerna*
