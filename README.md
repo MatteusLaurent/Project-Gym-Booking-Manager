@@ -70,8 +70,8 @@ Att få träna på OOP-analys, -design, och -implementation i grupp. Ytterligare
     - Utse roterande rollerna mötesansvarig och Scrum Master. Mötesansvarig schemalägger och kallar till Zoom-möte.
     - Daily-scrum i början på dagen där läraren bjuds in (se [schema](http://moodle.molk.se/mod/page/view.php?id=4087) på moodle).
     - Retrospective-möte i slutet på dagen utan läraren.
-    - Reflektera och summera dagens aktiviteter i en personlig dagbok (~5 minuter).
-    - Sista dagen, spendera gärna lite extra tid på mötet och dagboksskrivandet. En sorts post-mortem reflektion.
+    - Reflektera över och summera dagens aktiviteter i en personlig dagbok (~5 minuter).
+    - Spendera gärna lite extra tid den sista projekt-dagen på mötet och dagboksskrivandet. En sorts post-mortem reflektion.
 - **Tips:** Se till att ni skapar en gemensam helhetsbild av projektet under diagramprocessen. Ni kan då skapa tasks (vi jobbar agilt!) och fördela arbetsbördan på ett dynamiskt och smart sätt. Kommunikation är viktig under hela resan.
 
 ## Verktyg
@@ -92,7 +92,7 @@ Möten: **Zoom** för live-/standup-möten.
 
 **G:** Har jobbat enligt [genomförande](#genomförande) för att uppfylla punkterna i [Uppgift](#uppgift)-sektionen. Rimliga OOP-principer har applicerats i design och implementation. Koden är skriven för att klara  testerna.
 
-**VG:** Har inkluderat både sekvens- och aktivitets-diagram. OOP-principer har applicerats med gott omdöme i samtliga delar av design och implementation och påvisar särskild förståelse fär området. Har utökat testprojektet med rimliga unit-tester för skrivna klasser. 
+**VG:** Har inkluderat både sekvens- och aktivitets-diagram. OOP-principer har applicerats med gott omdöme i samtliga delar av design och implementation och påvisar särskild förståelse för området. Har utökat testprojektet med rimliga unit-tester för skrivna klasser. 
 
 
 ## Vad ska lämnas in?
@@ -105,7 +105,7 @@ För slutinlämning skapar ni ett zip-arkiv utav repo:ts master branch (på GitH
 ## Redovisning
 På fredag 17/2 2023 klockan 18:00 ska projektet vara inlämnat för varje grupp, vilket sker genom en gruppinlämning på Moodle för projektuppgiften.
 
-Enligt ovan sektion, ni skapar ett zip-arkiv av ert projekt, förslagsvis direkt från GitHub. Ladda upp zip-filen på Moodle för er grupp. Döp katalogen/mappen enligt formatet nedan och när ni packar zip-filen får den samma namn.
+Enligt ovan sektion så skapar ni ett zip-arkiv av ert projekt, förslagsvis direkt från GitHub. Ladda upp zip-filen på Moodle för er grupp. Namnge er zip-fil enligt nedan format.
 
 **MJU22_OPC_Projekt_01_Grp\<ert gruppnummer\>.zip**
 
