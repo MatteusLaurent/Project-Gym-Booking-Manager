@@ -4,9 +4,9 @@
 A gym wants help with the creation of a booking management system for their business. Today, the gym offers various activities, including:
 
 - Group fitness session for plural participants, directed by a coach from the staff.
-- Individual workout session, reserving some equipment/space in advance.
-- Individual workout session with a supervising personal trainer.
-- Consultation with a personal trainer.
+- Individual workout session, reserving some equipment/space in advance. SPACE ÄR NOG RUM I DETTA FALL?
+- Individual workout session with a supervising personal trainer. INNEBÄR DETTA ATT MAN OCKSÅ BOKAR UTRUSTNING?
+- Consultation with a personal trainer. DETTA INNEBÄR INTE TRÄNING, DVS HÄR BOKAS KANSKE INTE NGN UTRUSTNING/SPACES?
 
  However, operation and audit is a messy affair with current protocols. They want a new system to reduce overhead in daily operation, which should speed up business and simplify the management system training for new staff.
 ***
@@ -35,7 +35,7 @@ Customers:
 > <a id="us-3"></a>*It'd be great if I could be told in advance when a group session has been cancelled. Maybe you could use the phone number or e-mail you've collected at registration for something other than advertising your service to already paying customers.*
 
 Admin:
-> <a id="us-4"></a>*I am relieved about the prospects of reduced overhead, but also a bit worried about lacking oversight with an automated system that does not require as much micro-level meddling. Maybe we could log activity?*
+> <a id="us-4"></a>*I am relieved about the prospects of reduced overhead, but also a bit worried about lacking oversight with an automated system that does not require as much micro-level meddling. Maybe we could log activity?* LOGGAS BARA STAFF-AKTIVITETER, ELLER ALLT (DVS ÄVEN MEMBERS)?
 ***
 ### 3. Functional Requirements
 
