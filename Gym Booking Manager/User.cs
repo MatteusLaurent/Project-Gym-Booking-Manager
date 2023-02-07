@@ -12,16 +12,40 @@ namespace Gym_Booking_Manager
 {
     internal abstract class User
     {
-        //uniqueID?
-        public string name { get; set; } // Here the "field" is private, but properties (access of the field) public here - this constellation being purely declarative without change in functionality
+        public string name { get; set; }
         public string phone { get; set; }
         public string email { get; set; }
+        public int perm { get; set; }
 
         protected User(string name)
         {
             this.name = name;
             this.phone = "0";
             this.email = "test@test";
+            this.perm = 0;
+        }
+    }
+    internal class Customer : User
+    {
+        public Customer(string name) : base(name)
+        {
+            this.perm = 0;
+        }
+    }
+
+    internal class Staff : User
+    {
+        public Staff(string name) : base(name)
+        {
+            this.perm = 1;
+        }
+    }
+
+    internal class Admin : User
+    {
+        public Admin(string name) : base(name)
+        {
+            this.perm = 3;
         }
     }
 }
