@@ -8,7 +8,7 @@ namespace Gym_Booking_Manager
         static void Main(string[] args)
         {
             List <User> users = new List <User> ();
-            string[] lines = File.ReadAllLines("abc.txt");
+            string[] lines = File.ReadAllLines("Users.txt");
             foreach (string line in lines)
             {
                 string[] strings = line.Split(";");
