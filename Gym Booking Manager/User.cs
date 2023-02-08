@@ -15,7 +15,7 @@ namespace Gym_Booking_Manager
         public string name { get; set; }
         public string phone { get; set; }
         public string email { get; set; }
-        public int perm { get; set; }
+        protected int perm;
 
         protected User(string name)
         {
@@ -23,6 +23,25 @@ namespace Gym_Booking_Manager
             this.phone = "0";
             this.email = "test@test";
             this.perm = 0;
+        }
+
+        public static User ChooseUserType(string name, int choice)
+        {
+            switch (choice)
+            {
+                case 0:
+                    return new Customer(name);
+                case 1:
+                    return new Staff(name);
+                case 2:
+                    return new Admin(name);
+                default:
+                    throw new ArgumentException("Invalid choice");
+            }
+        }
+        public virtual int GetPerm()
+        {
+            return perm;
         }
     }
     internal class Customer : User
@@ -45,7 +64,8 @@ namespace Gym_Booking_Manager
     {
         public Admin(string name) : base(name)
         {
-            this.perm = 3;
+            this.perm = 2;
         }
     }
+
 }

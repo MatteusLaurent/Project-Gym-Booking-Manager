@@ -11,6 +11,12 @@ namespace Gym_Booking_Manager
 
         static void Main(string[] args)
         {
+            Console.WriteLine("Enter your name: ");
+            string name = Console.ReadLine();
+            Console.WriteLine("Enter your choice (0 for Customer, 1 for Staff, 2 for Admin): ");
+            int choice = int.Parse(Console.ReadLine());
+
+            User user = User.ChooseUserType(name, choice);
 
             int option = 0;
             do
@@ -25,7 +31,13 @@ namespace Gym_Booking_Manager
                 switch (option)
                 {
                     case 1:
-                        Console.WriteLine("Option 1");
+                        if (user.GetPerm() == 2)
+                        {
+                            Console.WriteLine("Access.");
+                        }
+                        else
+                            Console.WriteLine("No Access.");
+                        //Console.WriteLine("Option 1");
                         break;
                     case 2:
                         Console.WriteLine("Option 2");
