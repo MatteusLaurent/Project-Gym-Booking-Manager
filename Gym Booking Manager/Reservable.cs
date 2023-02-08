@@ -7,5 +7,9 @@ using System.Threading.Tasks;
 
 namespace Gym_Booking_Manager
 {
-
+    internal class Reservable
+    {
+        string name;
+        Calendar calender;
+    }
 }
