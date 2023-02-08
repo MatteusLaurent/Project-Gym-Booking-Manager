@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 #if DEBUG
 [assembly: InternalsVisibleTo("Tests")]
@@ -12,16 +7,60 @@ namespace Gym_Booking_Manager
 {
     internal abstract class User
     {
-        //uniqueID?
-        public string name { get; set; } // Here the "field" is private, but properties (access of the field) public here - this constellation being purely declarative without change in functionality
-        public string phone { get; set; }
-        public string email { get; set; }
+        private int Id { get; set; }
+        private string Name { get; set; }
+        private int Ssn { get; set; }
+        private string Phone { get; set; }
+        private string Email { get; set; }
+        private string LoginName { get; set; }
+        private string LoginPass { get; set; }
 
-        protected User(string name)
+        protected User(int id, string name, int ssn, string phone, string email, string loginName, string loginPass)
         {
-            this.name = name;
-            this.phone = "0";
-            this.email = "test@test";
+            Id = id;
+            Name = name;
+            Ssn = ssn;
+            Phone = phone;
+            Email = email;
+            LoginName = loginName;
+            LoginPass = loginPass;
         }
+    }
+
+    internal class Staff : User
+    {
+        private Staff(int id, string name, int ssn, string phone, string email, string loginName, string loginPass)
+            : base(id, name, ssn, phone, email, loginName, loginPass)
+        { }
+
+        private void RegisterUser() { }
+        private void DeleteUser() { }
+    }
+
+    internal class Customer : User
+    {
+        private bool IsPaying { get; set; }
+        private bool IsMember { get; set; }
+        private DateTime SubStart { get; set; }
+        private DateTime SubEnd { get; set; }
+
+        private Customer(int id, string name, int ssn, string phone, string email, string loginName, string loginPass,
+                        bool isPaying, bool isMember, DateTime subStart, DateTime subEnd)
+            : base(id, name, ssn, phone, email, loginName, loginPass)
+        {
+            IsPaying = isPaying;
+            IsMember = isMember;
+            SubStart = subStart;
+            SubEnd = subEnd;
+        }
+    }
+
+    internal class Admin : User
+    {
+        private Admin(int id, string name, int ssn, string phone, string email, string loginName, string loginPass)
+            : base(id, name, ssn, phone, email, loginName, loginPass)
+        { }
+
+        private void ViewLog() { }
     }
 }
