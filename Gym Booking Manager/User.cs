@@ -5,7 +5,7 @@ using System.Runtime.CompilerServices;
 #endif
 namespace Gym_Booking_Manager
 {
-    internal abstract class User
+    public abstract class User
     {
         private int Id { get; set; }
         private string Name { get; set; }
@@ -29,7 +29,7 @@ namespace Gym_Booking_Manager
 
     internal class Staff : User
     {
-        private Staff(int id, string name, int ssn, string phone, string email, string loginName, string loginPass)
+        public Staff(int id, string name, int ssn, string phone, string email, string loginName, string loginPass)
             : base(id, name, ssn, phone, email, loginName, loginPass)
         { }
 
@@ -37,27 +37,25 @@ namespace Gym_Booking_Manager
         private void DeleteUser() { }
     }
 
-    internal class Customer : User
+    public class Customer : User
     {
-        private bool IsPaying { get; set; }
-        private bool IsMember { get; set; }
         private DateTime SubStart { get; set; }
         private DateTime SubEnd { get; set; }
+        private bool IsMember;
 
-        private Customer(int id, string name, int ssn, string phone, string email, string loginName, string loginPass,
-                        bool isPaying, bool isMember, DateTime subStart, DateTime subEnd)
+        public Customer(int id, string name, int ssn, string phone, string email, string loginName, string loginPass,
+                        DateTime subStart, DateTime subEnd, bool ismember)
             : base(id, name, ssn, phone, email, loginName, loginPass)
         {
-            IsPaying = isPaying;
-            IsMember = isMember;
             SubStart = subStart;
             SubEnd = subEnd;
+            IsMember= ismember;
         }
     }
 
-    internal class Admin : User
+    public class Admin : User
     {
-        private Admin(int id, string name, int ssn, string phone, string email, string loginName, string loginPass)
+        public Admin(int id, string name, int ssn, string phone, string email, string loginName, string loginPass)
             : base(id, name, ssn, phone, email, loginName, loginPass)
         { }
 
