@@ -1,0 +1,477 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.0.0">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>210</x>
+      <y>530</y>
+      <w>160</w>
+      <h>220</h>
+    </coordinates>
+    <panel_attributes>/&lt;&lt;Abstract&gt;&gt;/
+/User/
+--
+-id: int
+-name: string
+-ssn: string
+-phone: string
+-email: string
+-loginName: string
+-loginPass: string
+-
++UpdateInfo(): void
++UpdateLogin(): void
+bg=gray</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>130</x>
+      <y>140</y>
+      <w>320</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>Customer
+--
+-isPaying: bool
+-isMember: bool
+-subStart: DateTime()
+-subEnd: DateTime()
+--
++DaySubscription(addDay: DateTime): void
++MonthSubscription(addMonth: DateTime): void
++YearSubscription(addYear: DateTime): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>110</x>
+      <y>310</y>
+      <w>160</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>Staff
+--
+--
++RegisterUser(): void
++UnregisterUser(): void
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>180</x>
+      <y>460</y>
+      <w>130</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=-
+&lt;&lt;inherits&gt;&gt;</panel_attributes>
+    <additional_attributes>110.0;40.0;10.0;40.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>280</x>
+      <y>290</y>
+      <w>30</w>
+      <h>260</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;240.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>310</x>
+      <y>310</y>
+      <w>160</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>Admin
+--
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>280</x>
+      <y>460</y>
+      <w>130</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=-
+&lt;&lt;inherits&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;40.0;110.0;40.0;110.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>430</x>
+      <y>490</y>
+      <w>400</w>
+      <h>260</h>
+    </coordinates>
+    <panel_attributes>/Activity/
+--
+-id: int
+-name: string
+-description: string
+-open: bool
+-instructor: Trainer()
+-participantLimit: int
+-participants: List&lt;Customer()&gt;
+-reservation: Reservation()
+-
++NewActivity(): void
++EditActivity(): void
++DeleteActivity(): void
++ActivityRegister(customer: Customer()): void
++ActivityCancel(customer: Customer(), activityID: int): void
++ActivityView(customer: Customer())</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>890</x>
+      <y>390</y>
+      <w>220</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>/&lt;&lt;Abstract&gt;&gt;/
+/Reservable/
+--
+-id: int
+-name: string
+-description: string
+-reserved: bool
+-calender: Calender()
+-
++NewReservable(): void
++UpdateReservable(): void
++DeleteReservatble():void
+bg=gray</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>890</x>
+      <y>810</y>
+      <w>220</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>Calender
+--
+timeFrom: DateTime()
+timeTo: DateTime()
+weekDay: WeekDay
+-
++ViewCalender(): void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>890</x>
+      <y>610</y>
+      <w>220</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>Reservation
+--
+-owner: User()
+-type: Reservable()
+-
++NewReservation(): void
++UpdateReservation(): void
++DeleteReservation(): void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>750</x>
+      <y>60</y>
+      <w>120</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Enumeration&gt;&gt;
+EquipType
+--
+Large
+Small
+Special
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>800</x>
+      <y>170</y>
+      <w>30</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;70.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1130</x>
+      <y>60</y>
+      <w>120</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Enumeration&gt;&gt;
+SpaceType
+--
+Studio
+Hall
+Lane
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1180</x>
+      <y>170</y>
+      <w>30</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;70.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>990</x>
+      <y>560</y>
+      <w>30</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>990</x>
+      <y>740</y>
+      <w>30</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>360</x>
+      <y>640</y>
+      <w>90</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>70.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>820</x>
+      <y>690</y>
+      <w>90</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;70.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>490</x>
+      <y>310</y>
+      <w>140</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>ToDo Note..
+--
+ViewLog(): void.
+Put method in 
+log/database class.
+bg=blue</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>890</x>
+      <y>160</y>
+      <w>220</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>Trainer
+--
+-instructor: Staff()
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>990</x>
+      <y>210</y>
+      <w>90</w>
+      <h>200</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;
+&lt;&lt;inherits&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;180.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>760</x>
+      <y>240</y>
+      <w>220</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>Equipment
+--
+-type: EquipType()
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1020</x>
+      <y>240</y>
+      <w>220</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>Space
+--
+-type: SpaceType(Enum)
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>860</x>
+      <y>290</y>
+      <w>290</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=-
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0;270.0;50.0;270.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>50</x>
+      <y>530</y>
+      <w>140</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>/User/
+--
+Add ID Nr. Counter.
++users: List&lt;User&gt;
+bg=blue</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1130</x>
+      <y>610</y>
+      <w>240</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>Reservation
+--
++reservationList: List&lt;Reservations&gt;
+bg=blue</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1130</x>
+      <y>390</y>
+      <w>240</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>/Reservable/
+--
++reservablesList: List&lt;Reservables&gt;
+bg=blue</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1170</x>
+      <y>770</y>
+      <w>120</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Enumeration&gt;&gt;
+WeekDays
+--
+Monday
+Tuesday
+Wednesday
+Thursday
+Friday
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1100</x>
+      <y>850</y>
+      <w>90</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;70.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>430</x>
+      <y>770</y>
+      <w>240</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>Activity
+--
++activities: List&lt;Activity&gt;
+bg=blue</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
