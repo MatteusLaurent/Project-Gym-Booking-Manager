@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Gym_Booking_Manager
 {
-    internal class Reservation
+    internal interface IReservingEntity
     {
-        private readonly IReservingEntity owner;
-        private readonly DateTime timeSlot;
+        void owner();
     }
 }
