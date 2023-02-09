@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Runtime.CompilerServices;
 
 #if DEBUG
@@ -82,8 +83,40 @@ namespace Gym_Booking_Manager.Users
     {
         public Staff(int id, string name, int ssn, string phone, string email, string loginName, string loginPass)
             : base(id, name, ssn, phone, email, loginName, loginPass) { }
-        private void RegisterUser() { }
-        private void UnregisterUser() { }
+        private void RegisterUser(List<User> users) { }
+        private void UnregisterUser(List<User> users) { }
+        private void ManageAccount(List<User> users) { }
+        public void Options(List<User> users)
+        {
+            bool go = true;
+            while(go==true)
+            { 
+            Console.WriteLine("Skriv 1 för Register user, 2 för Unregister User, 3 för Manage account, 4 för Avboka aktiviteter, 5 Registerara artiklar, 6 Exit");
+            string svar = Console.ReadLine();
+            switch (svar)
+            {
+                case "1":
+                    this.RegisterUser(users);
+                    break;
+                case "2":
+                    this.UnregisterUser(users);
+                    break;
+                case "3":
+                    this.ManageAccount(users);
+                    break;
+                case "4":
+                    //
+                    break;
+                case "5":
+                    //
+                    break;
+                case "6":
+                    Console.WriteLine("Hej då!");
+                        go = false;
+                    break;
+            }
+            }
+        }
     }
 
     public class Customer : User
