@@ -7,9 +7,11 @@ namespace Gym_Booking_Manager
     {
         static void Main(string[] args)
         {
+            int activeUser;
             List <User> users = new List <User> ();
             User.LoadUsers(users);
             Console.WriteLine(users[0].name);
+            activeUser=User.LogIn(users);
         }        
         // Static methods for the program
     }

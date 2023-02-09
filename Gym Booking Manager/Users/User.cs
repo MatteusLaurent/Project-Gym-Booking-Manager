@@ -33,6 +33,39 @@ namespace Gym_Booking_Manager.Users
         {
 
         }
+        public static int LogIn(List<User> users)
+        {
+            int result=-1;
+            int tries = 5;
+            while(result==-1)
+            {
+                Console.WriteLine("Skriv in username");
+                string username = Console.ReadLine();
+                foreach (User user in users)
+                {
+                    if (username == user.loginName) result = user.id; break;
+                }
+                if(result==-1) Console.WriteLine("Felaktigt username");
+            }
+            while (true)
+            {
+                Console.WriteLine("Skriv in password");
+                string input = Console.ReadLine();
+                if (input == users[result].loginPass)
+                { 
+                    Console.WriteLine("Välkommen " + users[result].name);
+                    break;
+                }
+                Console.WriteLine("Felaktigt password "+tries+" försök kvar");                
+                tries--;
+                if (tries == 0)
+                { 
+                    Console.WriteLine("Maximalt antal försök nått!");
+                    return -1;
+                }
+            }
+            return result;
+        }
         public static void LoadUsers(List<User> users)
         {
             string[] lines = File.ReadAllLines("Users/Users.txt");
