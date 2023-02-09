@@ -60,7 +60,7 @@ namespace Gym_Booking_Manager.Users
                 {
                     if (username == user.loginName)
                     { 
-                        result = user.id-1;
+                        result = user.id;
                     }
                 }
                 if(result==-1) Console.WriteLine("Felaktigt username ");

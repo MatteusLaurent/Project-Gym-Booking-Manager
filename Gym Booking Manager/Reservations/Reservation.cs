@@ -1,10 +1,11 @@
 ﻿using Gym_Booking_Manager.Users;
+using Gym_Booking_Manager.Calenda;
 
 namespace Gym_Booking_Manager.Reservations
 {
     public class Reservation
     {
-        public List<Reservation> reservations = new List<Reservation>();
+        public static List<Reservation> reservations = new List<Reservation>();
 
         public int id { get; set; }
         public string name { get; set; }
@@ -21,8 +22,15 @@ namespace Gym_Booking_Manager.Reservations
             this.owner = owner;
             this.type = type;
             this.date = date;
-
-            reservations.Add(this);
+        }
+        public void Load()
+        {
+            string[] lines = File.ReadAllLines("Reservations/Reservations.txt");
+            foreach (string line in lines)
+            {
+                string[] strings = line.Split(";");
+                reservations.Add(new Reservation(strings[0], strings[1], User.users[int.Parse(strings[2])], Reservable.reservables[int.Parse(strings[3])], Calendar));
+            }
         }
         public void NewReservation()
         {
@@ -39,7 +47,7 @@ namespace Gym_Booking_Manager.Reservations
     }
     public class Reservable
     {
-        public List<Reservable> reservables = new List<Reservable>();
+        public static List<Reservable> reservables = new List<Reservable>();
 
         int id;
         string name;

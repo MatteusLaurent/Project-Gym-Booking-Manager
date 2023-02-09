@@ -1,5 +1,6 @@
-﻿using Gym_Booking_Manager.Functionality;
+﻿using Gym_Booking_Manager.Activities;
 using Gym_Booking_Manager.Users;
+using Gym_Booking_Manager.Reservations;
 
 namespace Gym_Booking_Manager
 {
@@ -10,7 +11,7 @@ namespace Gym_Booking_Manager
         {
             int activeUser;
             User.Load();
-            //Activity.Load();
+            Activity.Load();
             activeUser = User.LogIn();
             User.users[activeUser].Menu();
         }
