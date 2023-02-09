@@ -3,31 +3,39 @@ using System.Runtime.CompilerServices;
 #if DEBUG
 [assembly: InternalsVisibleTo("Tests")]
 #endif
-namespace Gym_Booking_Manager
+namespace Gym_Booking_Manager.Users
 {
     public abstract class User
     {
-        private int Id { get; set; }
-        private string Name { get; set; }
-        private int Ssn { get; set; }
-        private string Phone { get; set; }
-        private string Email { get; set; }
-        private string LoginName { get; set; }
-        private string LoginPass { get; set; }
+        public int id { get; set; }
+        public string name { get; set; }
+        public int ssn { get; set; }
+        public string phone { get; set; }
+        public string email { get; set; }
+        public string loginName { get; set; }
+        public string loginPass { get; set; }
 
         protected User(int id, string name, int ssn, string phone, string email, string loginName, string loginPass)
         {
-            Id = id;
-            Name = name;
-            Ssn = ssn;
-            Phone = phone;
-            Email = email;
-            LoginName = loginName;
-            LoginPass = loginPass;
+            this.id = id;
+            this.name = name;
+            this.ssn = ssn;
+            this.phone = phone;
+            this.email = email;
+            this.loginName = loginName;
+            this.loginPass = loginPass;
         }
-        public static void AddUsers(List<User> users)
+        public void UpdateInfo()
         {
-            string[] lines = File.ReadAllLines("Users.txt");
+
+        }
+        public void UpdateLogin()
+        {
+
+        }
+        public static void LoadUsers(List<User> users)
+        {
+            string[] lines = File.ReadAllLines("Users/Users.txt");
             foreach (string line in lines)
             {
                 string[] strings = line.Split(";");
@@ -37,39 +45,43 @@ namespace Gym_Booking_Manager
             }
         }
     }
-
     internal class Staff : User
     {
         public Staff(int id, string name, int ssn, string phone, string email, string loginName, string loginPass)
-            : base(id, name, ssn, phone, email, loginName, loginPass)
-        { }
-
+            : base(id, name, ssn, phone, email, loginName, loginPass) { }
         private void RegisterUser() { }
-        private void DeleteUser() { }
+        private void UnregisterUser() { }
     }
 
     public class Customer : User
     {
-        private DateTime SubStart { get; set; }
-        private DateTime SubEnd { get; set; }
-        private bool IsMember;
-
+        public bool isMember { get; set; }
+        public DateTime subStart { get; set; }
+        public DateTime subEnd { get; set; }
         public Customer(int id, string name, int ssn, string phone, string email, string loginName, string loginPass,
-                        DateTime subStart, DateTime subEnd, bool ismember)
+                        DateTime subStart, DateTime subEnd, bool isMember)
             : base(id, name, ssn, phone, email, loginName, loginPass)
         {
-            SubStart = subStart;
-            SubEnd = subEnd;
-            IsMember= ismember;
+            this.subStart = subStart;
+            this.subEnd = subEnd;
+            this.isMember = isMember;
+        }
+        public void DaySubscription(DateTime addDay)
+        {
+
+        }
+        public void MonthSubscription(DateTime addMonth)
+        {
+
+        }
+        public void YearSubscription(DateTime addYear)
+        {
+
         }
     }
-
     public class Admin : User
     {
         public Admin(int id, string name, int ssn, string phone, string email, string loginName, string loginPass)
-            : base(id, name, ssn, phone, email, loginName, loginPass)
-        { }
-
-        private void ViewLog() { }
+            : base(id, name, ssn, phone, email, loginName, loginPass) { }
     }
 }
