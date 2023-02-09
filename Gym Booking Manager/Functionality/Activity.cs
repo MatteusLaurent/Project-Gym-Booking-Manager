@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Gym_Booking_Manager.Reservations;
 using Gym_Booking_Manager.Users;
 

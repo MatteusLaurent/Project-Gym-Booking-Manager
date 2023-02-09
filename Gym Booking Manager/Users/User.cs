@@ -1,13 +1,9 @@
-using System.Diagnostics;
-using System.Runtime.CompilerServices;
-
-#if DEBUG
-[assembly: InternalsVisibleTo("Tests")]
-#endif
 namespace Gym_Booking_Manager.Users
 {
     public abstract class User
     {
+        public static List<User> users = new List<User>();
+
         public int id { get; set; }
         public string name { get; set; }
         public int ssn { get; set; }
@@ -25,6 +21,8 @@ namespace Gym_Booking_Manager.Users
             this.email = email;
             this.loginName = loginName;
             this.loginPass = loginPass;
+
+            users.Add(this);
         }
         public void UpdateInfo()
         {
@@ -34,7 +32,7 @@ namespace Gym_Booking_Manager.Users
         {
 
         }
-        public static int LogIn(List<User> users)
+        public static int LogIn()
         {
             int result=-1;
             int tries = 5;
@@ -67,7 +65,7 @@ namespace Gym_Booking_Manager.Users
             }
             return result;
         }
-        public static void LoadUsers(List<User> users)
+        public static void LoadUsers()
         {
             string[] lines = File.ReadAllLines("Users/Users.txt");
             foreach (string line in lines)
@@ -83,8 +81,40 @@ namespace Gym_Booking_Manager.Users
     {
         public Staff(int id, string name, int ssn, string phone, string email, string loginName, string loginPass)
             : base(id, name, ssn, phone, email, loginName, loginPass) { }
-        private void RegisterUser() { }
-        private void UnregisterUser() { }
+        public void RegisterUser() { }
+        public void UnregisterUser() { }
+        public void ManageAccounts() { }
+        public void ManageOptions()
+        {
+            bool go = true;
+            while (go == true)
+            {
+                Console.WriteLine("Skriv 1 för Register user, 2 för Unregister User, 3 för Manage account, 4 för Avboka aktiviteter, 5 Registerara artiklar, 6 Exit");
+                string input = Console.ReadLine();
+                switch (input)
+                {
+                    case "1":
+                        RegisterUser();
+                        break;
+                    case "2":
+                        UnregisterUser();
+                        break;
+                    case "3":
+                        ManageAccounts();
+                        break;
+                    case "4":
+                        //
+                        break;
+                    case "5":
+                        //
+                        break;
+                    case "6":
+                        Console.WriteLine("Hej då!");
+                        go = false;
+                        break;
+                }
+            }
+        }
     }
 
     public class Customer : User
