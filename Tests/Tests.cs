@@ -2,6 +2,7 @@
 using static Gym_Booking_Manager.Space;
 using System;
 using System.Diagnostics;
+using Gym_Booking_Manager.Functionality;
 
 namespace Tests
 {

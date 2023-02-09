@@ -4,8 +4,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>330</x>
-      <y>540</y>
+      <x>270</x>
+      <y>510</y>
       <w>160</w>
       <h>220</h>
     </coordinates>
@@ -28,8 +28,8 @@ bg=gray</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>250</x>
-      <y>150</y>
+      <x>190</x>
+      <y>120</y>
       <w>320</w>
       <h>160</h>
     </coordinates>
@@ -47,8 +47,8 @@ bg=gray</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>230</x>
-      <y>320</y>
+      <x>170</x>
+      <y>290</y>
       <w>160</w>
       <h>160</h>
     </coordinates>
@@ -65,8 +65,8 @@ bg=gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>300</x>
-      <y>470</y>
+      <x>240</x>
+      <y>440</y>
       <w>130</w>
       <h>60</h>
     </coordinates>
@@ -77,8 +77,8 @@ bg=gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>400</x>
-      <y>300</y>
+      <x>340</x>
+      <y>270</y>
       <w>30</w>
       <h>260</h>
     </coordinates>
@@ -88,8 +88,8 @@ bg=gray</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>430</x>
-      <y>320</y>
+      <x>370</x>
+      <y>290</y>
       <w>160</w>
       <h>160</h>
     </coordinates>
@@ -102,8 +102,8 @@ bg=gray</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>400</x>
-      <y>470</y>
+      <x>340</x>
+      <y>440</y>
       <w>130</w>
       <h>60</h>
     </coordinates>
@@ -114,8 +114,8 @@ bg=gray</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>550</x>
-      <y>500</y>
+      <x>490</x>
+      <y>470</y>
       <w>400</w>
       <h>260</h>
     </coordinates>
@@ -125,8 +125,8 @@ bg=gray</panel_attributes>
 -name: string
 -description: string
 -open: bool
--instructor: Trainer()
--participantLimit: int
+-instructor: PTrainer()
+-participantsLimit: int
 -participants: List&lt;Customer()&gt;
 -reservation: Reservation()
 -
@@ -141,8 +141,8 @@ bg=gray</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1010</x>
-      <y>400</y>
+      <x>950</x>
+      <y>370</y>
       <w>220</w>
       <h>180</h>
     </coordinates>
@@ -153,7 +153,6 @@ bg=gray</panel_attributes>
 -name: string
 -description: string
 -reserved: bool
--calender: Calender()
 -
 +NewReservable(): void
 +UpdateReservable(): void
@@ -164,8 +163,8 @@ bg=gray</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1010</x>
-      <y>820</y>
+      <x>950</x>
+      <y>810</y>
       <w>220</w>
       <h>100</h>
     </coordinates>
@@ -182,13 +181,16 @@ weekDay: WeekDay
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1010</x>
-      <y>620</y>
+      <x>950</x>
+      <y>590</y>
       <w>220</w>
-      <h>140</h>
+      <h>180</h>
     </coordinates>
     <panel_attributes>Reservation
 --
+-id: int
+-name: string
+-description: string
 -owner: User()
 -type: Reservable()
 -date: Calender()
@@ -202,8 +204,8 @@ weekDay: WeekDay
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>870</x>
-      <y>70</y>
+      <x>810</x>
+      <y>40</y>
       <w>120</w>
       <h>120</h>
     </coordinates>
@@ -220,8 +222,8 @@ Special
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>920</x>
-      <y>180</y>
+      <x>860</x>
+      <y>150</y>
       <w>30</w>
       <h>90</h>
     </coordinates>
@@ -231,8 +233,8 @@ Special
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1250</x>
-      <y>70</y>
+      <x>1190</x>
+      <y>40</y>
       <w>120</w>
       <h>120</h>
     </coordinates>
@@ -249,8 +251,8 @@ Lane
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1300</x>
-      <y>180</y>
+      <x>1240</x>
+      <y>150</y>
       <w>30</w>
       <h>90</h>
     </coordinates>
@@ -260,8 +262,8 @@ Lane
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1110</x>
-      <y>570</y>
+      <x>1050</x>
+      <y>540</y>
       <w>30</w>
       <h>70</h>
     </coordinates>
@@ -271,19 +273,19 @@ Lane
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1110</x>
-      <y>750</y>
+      <x>1050</x>
+      <y>760</y>
       <w>30</w>
-      <h>90</h>
+      <h>70</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>480</x>
-      <y>650</y>
+      <x>420</x>
+      <y>620</y>
       <w>90</w>
       <h>30</h>
     </coordinates>
@@ -293,8 +295,8 @@ Lane
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>940</x>
-      <y>700</y>
+      <x>880</x>
+      <y>670</y>
       <w>90</w>
       <h>30</h>
     </coordinates>
@@ -304,8 +306,8 @@ Lane
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>610</x>
-      <y>320</y>
+      <x>550</x>
+      <y>290</y>
       <w>140</w>
       <h>90</h>
     </coordinates>
@@ -320,8 +322,8 @@ bg=blue</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1010</x>
-      <y>170</y>
+      <x>950</x>
+      <y>140</y>
       <w>220</w>
       <h>60</h>
     </coordinates>
@@ -335,8 +337,8 @@ bg=blue</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1110</x>
-      <y>220</y>
+      <x>1050</x>
+      <y>190</y>
       <w>90</w>
       <h>200</h>
     </coordinates>
@@ -347,8 +349,8 @@ bg=blue</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>880</x>
-      <y>250</y>
+      <x>820</x>
+      <y>220</y>
       <w>220</w>
       <h>60</h>
     </coordinates>
@@ -362,8 +364,8 @@ bg=blue</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1140</x>
-      <y>250</y>
+      <x>1080</x>
+      <y>220</y>
       <w>220</w>
       <h>60</h>
     </coordinates>
@@ -377,8 +379,8 @@ bg=blue</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>980</x>
-      <y>300</y>
+      <x>920</x>
+      <y>270</y>
       <w>290</w>
       <h>70</h>
     </coordinates>
@@ -389,8 +391,8 @@ bg=blue</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>170</x>
-      <y>540</y>
+      <x>110</x>
+      <y>510</y>
       <w>140</w>
       <h>60</h>
     </coordinates>
@@ -404,8 +406,8 @@ bg=blue</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>1250</x>
-      <y>620</y>
+      <x>1190</x>
+      <y>590</y>
       <w>240</w>
       <h>60</h>
     </coordinates>
@@ -418,8 +420,8 @@ bg=blue</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>1250</x>
-      <y>400</y>
+      <x>1190</x>
+      <y>370</y>
       <w>240</w>
       <h>60</h>
     </coordinates>
@@ -432,8 +434,8 @@ bg=blue</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1290</x>
-      <y>780</y>
+      <x>1230</x>
+      <y>770</y>
       <w>120</w>
       <h>140</h>
     </coordinates>
@@ -452,8 +454,8 @@ Friday
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1220</x>
-      <y>860</y>
+      <x>1160</x>
+      <y>850</y>
       <w>90</w>
       <h>30</h>
     </coordinates>
@@ -463,8 +465,8 @@ Friday
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>550</x>
-      <y>780</y>
+      <x>490</x>
+      <y>750</y>
       <w>240</w>
       <h>60</h>
     </coordinates>

@@ -45,19 +45,19 @@ namespace Gym_Booking_Manager.Users
             }
         }
     }
-    internal class Staff : User
+    public class Staff : User
     {
         public Staff(int id, string name, int ssn, string phone, string email, string loginName, string loginPass)
             : base(id, name, ssn, phone, email, loginName, loginPass) { }
-        private void RegisterUser() { }
-        private void UnregisterUser() { }
+        public void RegisterUser() { }
+        public void UnregisterUser() { }
     }
 
     public class Customer : User
     {
-        public bool isMember { get; set; }
         public DateTime subStart { get; set; }
         public DateTime subEnd { get; set; }
+        public bool isMember { get; set; }
         public Customer(int id, string name, int ssn, string phone, string email, string loginName, string loginPass,
                         DateTime subStart, DateTime subEnd, bool isMember)
             : base(id, name, ssn, phone, email, loginName, loginPass)
