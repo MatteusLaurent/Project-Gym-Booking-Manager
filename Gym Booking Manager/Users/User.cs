@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Runtime.CompilerServices;
 
 #if DEBUG
@@ -82,8 +83,8 @@ namespace Gym_Booking_Manager.Users
     {
         public Staff(int id, string name, int ssn, string phone, string email, string loginName, string loginPass)
             : base(id, name, ssn, phone, email, loginName, loginPass) { }
-        public void RegisterUser() { }
-        public void UnregisterUser() { }
+        private void RegisterUser() { }
+        private void UnregisterUser() { }
     }
 
     public class Customer : User
