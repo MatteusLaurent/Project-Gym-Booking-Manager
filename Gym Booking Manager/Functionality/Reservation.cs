@@ -70,8 +70,8 @@ namespace Gym_Booking_Manager.Reservations
     }
     public class Equipment : Reservable
     {
-        private EquipType type;
-        public Equipment(string name, string description, bool reserved, EquipType type)
+        private string type;
+        public Equipment(string name, string description, bool reserved, string type)
             : base(name, description, reserved)
         {
             this.type = type;
@@ -79,8 +79,8 @@ namespace Gym_Booking_Manager.Reservations
     }
     public class Space : Reservable
     {
-        private SpaceType type;
-        public Space(string name, string description, bool reserved, SpaceType type)
+        private string type;
+        public Space(string name, string description, bool reserved, string type)
             : base(name, description, reserved)
         {
             this.type = type;
@@ -94,17 +94,5 @@ namespace Gym_Booking_Manager.Reservations
         {
             this.instructor = instructor;
         }
-    }
-    public enum EquipType
-    {
-        Large,
-        Small,
-        Special
-    }
-    public enum SpaceType
-    {
-        Studio,
-        Hall,
-        Lane
     }
 }

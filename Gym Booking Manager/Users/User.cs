@@ -21,8 +21,6 @@ namespace Gym_Booking_Manager.Users
             this.email = email;
             this.loginName = loginName;
             this.loginPass = loginPass;
-
-            users.Add(this);
         }
         public void UpdateInfo()
         {
@@ -60,9 +58,12 @@ namespace Gym_Booking_Manager.Users
                 string username = Console.ReadLine();
                 foreach (User user in users)
                 {
-                    if (username == user.loginName) result = user.id; break;
+                    if (username == user.loginName)
+                    { 
+                        result = user.id-1;
+                    }
                 }
-                if(result==-1) Console.WriteLine("Felaktigt username");
+                if(result==-1) Console.WriteLine("Felaktigt username ");
             }
             while (true)
             {
@@ -83,7 +84,7 @@ namespace Gym_Booking_Manager.Users
             }
             return result;
         }
-        public static void LoadUsers()
+        public static void Load()
         {
             string[] lines = File.ReadAllLines("Users/Users.txt");
             foreach (string line in lines)
@@ -94,6 +95,7 @@ namespace Gym_Booking_Manager.Users
                 if (strings[0] == "Customer") users.Add(new Customer(int.Parse(strings[1]), strings[2], int.Parse(strings[3]), strings[4], strings[5], strings[6], strings[7], DateTime.Parse(strings[8]), DateTime.Parse(strings[9]), bool.Parse(strings[10])));
             }
         }
+        public abstract void Menu();
     }
     public class Staff : User
     {
@@ -142,7 +144,7 @@ namespace Gym_Booking_Manager.Users
         }
         public void UnregisterUser() { }
         public void ManageAccounts() { }
-        public void ManageOptions()
+        public override void Menu()
         {
             bool go = true;
             while (go == true)
@@ -200,10 +202,12 @@ namespace Gym_Booking_Manager.Users
         {
 
         }
+        public override void Menu() { }
     }
     public class Admin : User
     {
         public Admin(int id, string name, int ssn, string phone, string email, string loginName, string loginPass)
             : base(id, name, ssn, phone, email, loginName, loginPass) { }
+        public override void Menu() { }
     }
 }

@@ -29,6 +29,17 @@ namespace Gym_Booking_Manager.Functionality
 
             activities.Add(this);
         }
+        public void Load()
+        {
+            string[] lines = File.ReadAllLines("Activities/Activities.txt");
+           // foreach (string line in lines)
+            //{
+              //  string[] strings = line.Split(";");
+               // if (strings[0] == "Staff") activities.Add(new Staff(int.Parse(strings[1]), strings[2], int.Parse(strings[3]), strings[4], strings[5], strings[6], strings[7]));
+                //if (strings[0] == "Admin") activities.Add(new Admin(int.Parse(strings[1]), strings[2], int.Parse(strings[3]), strings[4], strings[5], strings[6], strings[7]));
+                //if (strings[0] == "Customer") activities.Add(new Customer(int.Parse(strings[1]), strings[2], int.Parse(strings[3]), strings[4], strings[5], strings[6], strings[7], DateTime.Parse(strings[8]), DateTime.Parse(strings[9]), bool.Parse(strings[10])));
+            //}
+        }
 
         public void NewActivity()
         {
