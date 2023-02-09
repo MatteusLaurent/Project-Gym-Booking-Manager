@@ -7,7 +7,7 @@ namespace Gym_Booking_Manager.Functionality
 {
     public class Activity
     {
-        public List<Activity> activities = new List<Activity>();
+        public static List<Activity> activities = new List<Activity>();
 
         public int id { get; set; }
         public string name { get; set; }
@@ -32,27 +32,27 @@ namespace Gym_Booking_Manager.Functionality
 
         public void NewActivity()
         {
-
+            // Staff registers new activites.
         }
         public void EditActivity()
         {
-
+            // Staff edits activites.
         }
         public void DeleteActivity()
         {
-
+            // Staff deletes activites.
         }
         public void ActivityRegister()
         {
-
+            // Customers register for activities.
         }
         public void ActivityCancel()
         {
-
+            // Customers cancels registered activities.
         }
         public void ActivityView()
         {
-
+            // Customers views registered activities.
         }
     }
 }

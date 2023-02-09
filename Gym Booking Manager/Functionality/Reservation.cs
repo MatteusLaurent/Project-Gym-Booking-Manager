@@ -1,19 +1,20 @@
-﻿using Gym_Booking_Manager.Users;
+﻿using Gym_Booking_Manager.Scheduling;
+using Gym_Booking_Manager.Users;
 
 namespace Gym_Booking_Manager.Reservations
 {
     public class Reservation
     {
-        public List<Reservation> reservations = new List<Reservation>();
+        public static List<Reservation> reservations = new List<Reservation>();
 
         public int id { get; set; }
         public string name { get; set; }
         public string description { get; set; }
         public User owner { get; set; }
         public Reservable type { get; set; }
-        public Calendar date { get; set; }
+        public Calender date { get; set; }
 
-        public Reservation(string name, string description, User owner, Reservable type, Calendar date)
+        public Reservation(string name, string description, User owner, Reservable type, Calender date)
         {
             id = 0; // IdCounter():
             this.name = name;
@@ -26,20 +27,20 @@ namespace Gym_Booking_Manager.Reservations
         }
         public void NewReservation()
         {
-
+            // Register new reservations to list.
         }
         public void UpdateReservation()
         {
-
+            // Update reservations from list.
         }
         public void DeleteReservation()
         {
-
+            // Delete reservations from list.
         }
     }
     public class Reservable
     {
-        public List<Reservable> reservables = new List<Reservable>();
+        public static List<Reservable> reservables = new List<Reservable>();
 
         int id;
         string name;
@@ -57,34 +58,26 @@ namespace Gym_Booking_Manager.Reservations
         }
         public void NewReservable()
         {
-
+            // Staff creates new reservables.
         }
         public void UpdateReservable()
         {
-
+            // Staff updates existing reservables.
         }
         public void DeleteReservable()
         {
-
+            // Staff deletes existing reservables.
         }
     }
     public class Equipment : Reservable
     {
-        private EquipType type;
-        public Equipment(string name, string description, bool reserved, EquipType type)
-            : base(name, description, reserved)
-        {
-            this.type = type;
-        }
+        public Equipment(string name, string description, bool reserved)
+            : base(name, description, reserved) { }
     }
     public class Space : Reservable
     {
-        private SpaceType type;
-        public Space(string name, string description, bool reserved, SpaceType type)
-            : base(name, description, reserved)
-        {
-            this.type = type;
-        }
+        public Space(string name, string description, bool reserved)
+            : base(name, description, reserved) { }
     }
     public class PTrainer : Reservable
     {
@@ -94,17 +87,5 @@ namespace Gym_Booking_Manager.Reservations
         {
             this.instructor = instructor;
         }
-    }
-    public enum EquipType
-    {
-        Large,
-        Small,
-        Special
-    }
-    public enum SpaceType
-    {
-        Studio,
-        Hall,
-        Lane
     }
 }
