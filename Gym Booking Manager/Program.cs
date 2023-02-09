@@ -7,9 +7,13 @@ namespace Gym_Booking_Manager
         static void Main(string[] args)
         {
             //int activeUser;
-            //User.LoadUsers(User.users);
+            //User.LoadUsers();
             //Console.WriteLine(User.users[0].name);
-            //activeUser=User.LogIn(User.users);
+            //activeUser = User.LogIn();
+
+            //Staff staff = new Staff(4, "", 0, "", "", "", "");
+            //staff.RegisterUser();
+            //staff.RegisterUser();
         }
     }
 }

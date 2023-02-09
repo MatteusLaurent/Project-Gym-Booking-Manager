@@ -32,6 +32,24 @@ namespace Gym_Booking_Manager.Users
         {
 
         }
+        public int GetNextID()
+        {
+            int maxID = 0;
+            using (StreamReader reader = new StreamReader("Users/Users.txt"))
+            {
+                string line;
+                while ((line = reader.ReadLine()) != null)
+                {
+                    string[] parts = line.Split(';');
+                    int currentID = int.Parse(parts[1]);
+                    if (currentID > maxID)
+                    {
+                        maxID = currentID;
+                    }
+                }
+            }
+            return maxID + 1;
+        }
         public static int LogIn()
         {
             int result=-1;
@@ -81,7 +99,47 @@ namespace Gym_Booking_Manager.Users
     {
         public Staff(int id, string name, int ssn, string phone, string email, string loginName, string loginPass)
             : base(id, name, ssn, phone, email, loginName, loginPass) { }
-        public void RegisterUser() { }
+        public void RegisterUser() 
+        {
+            Console.WriteLine("Enter user name: ");
+            string name = Console.ReadLine();
+            Console.WriteLine("Enter user SSN: ");
+            int ssn = Int32.Parse(Console.ReadLine());
+            Console.WriteLine("Enter user phone: ");
+            string phone = Console.ReadLine();
+            Console.WriteLine("Enter user email: ");
+            string email = Console.ReadLine();
+            Console.WriteLine("Enter user login name: ");
+            string loginName = Console.ReadLine();
+            Console.WriteLine("Enter user login password: ");
+            string loginPass = Console.ReadLine();
+            int id = GetNextID();
+
+            Console.WriteLine("Enter 1 for One Day membership, 2 for One Month membership, 3 for One Year membership:");
+            int membershipChoice = int.Parse(Console.ReadLine());
+            DateTime membershipDuration;
+            switch (membershipChoice)
+            {
+                case 1:
+                    membershipDuration = DateTime.Now.AddDays(1);
+                    break;
+                case 2:
+                    membershipDuration = DateTime.Now.AddMonths(1);
+                    break;
+                case 3:
+                    membershipDuration = DateTime.Now.AddYears(1);
+                    break;
+                default:
+                    Console.WriteLine("Invalid membership choice. Defaulting to Daily pass membership.");
+                    membershipDuration = DateTime.Now.AddDays(1);
+                    break;
+            }
+
+            using (StreamWriter writer = new StreamWriter("Users/Users.txt", true))
+            {
+                writer.WriteLine($"Customer;{id};{name};{ssn};{phone};{email};{loginName};{loginPass};{DateTime.Now};{membershipDuration};True");
+            }
+        }
         public void UnregisterUser() { }
         public void ManageAccounts() { }
         public void ManageOptions()
