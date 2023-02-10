@@ -10,11 +10,12 @@ namespace Gym_Booking_Manager
     {
         static void Main(string[] args)
         {
-            int activeUser;
-            User.Load();
-            Reservation.Load();
-            activeUser = User.LogIn();
-            User.users[activeUser].Menu();
+            //int activeUser;
+            //User.Load();
+            //Reservation.Load();
+            //activeUser = User.LogIn();
+            //User.users[activeUser].Menu();
+            Calendar.ViewCalender();
         }
     }
 }

@@ -37,7 +37,8 @@ namespace Gym_Booking_Manager.Calendars
         }
         public static void ViewCalenderWeek()
         {
-
+            Console.WriteLine($"|{"MONDAY", }|TUESDAY   |WEDNESDAY |THURSDAY  |FRIDAY    |SATURDAY  |SUNDAY    |");
+            Console.WriteLine($"|--------------------|----------|----------|----------|----------|----------|----------|");
         }
         public static void ViewCalenderMonth()
         {
