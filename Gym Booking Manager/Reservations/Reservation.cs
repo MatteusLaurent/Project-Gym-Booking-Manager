@@ -14,7 +14,7 @@ namespace Gym_Booking_Manager.Reservations
         public List<Reservable> reservableList { get; set; }
         public Calendar date { get; set; }
 
-        public Reservation(string name, string description, User owner, Calendar date, List<Reservable> itemss)
+        public Reservation(string name, string description, User owner, Calendar date, List<Reservable> reservableList)
         {
             id = 0; // IdCounter():
             this.name = name;
@@ -58,15 +58,23 @@ namespace Gym_Booking_Manager.Reservations
         string name;
         string description;
         List<Reservation> reservations;
-        public Reservable(string name, string description)
+        public Reservable(int id,string name, string description)
         {
-            id = 0; // IdCounter():
-
+            this.id = id; // IdCounter():
             this.name = name;
             this.description = description;
             reservations = new List<Reservation>();
-
-            reservables.Add(this);
+        }
+        public static void Load()
+        {
+            string[] lines = File.ReadAllLines("Reservations/Reservables.txt");
+            foreach (string line in lines)
+            {
+                string[] strings = line.Split(";");
+                if (strings[0]=="Equipment")reservables.Add(new Equipment(int.Parse(strings[1]), strings[2], strings[3]));
+                if (strings[0] == "Space") reservables.Add(new Space(int.Parse(strings[1]), strings[2], strings[3]));
+                if (strings[0] == "PTrainer") reservables.Add(new PTrainer(int.Parse(strings[1]), strings[2], strings[3], int.Parse(strings[4])));
+            }
         }
         public void NewReservable()
         {
@@ -83,21 +91,21 @@ namespace Gym_Booking_Manager.Reservations
     }
     public class Equipment : Reservable
     {
-        public Equipment(string name, string description, bool reserved)
-            : base(name, description) { }
+        public Equipment(int id,string name, string description)
+            : base(id,name, description) { }
     }
     public class Space : Reservable
     {
-        public Space(string name, string description, bool reserved)
-            : base(name, description) { }
+        public Space(int id,string name, string description)
+            : base(id, name, description) { }
     }
     public class PTrainer : Reservable
     {
-        private Staff instructor;
-        public PTrainer(string name, string description, bool reserved, Staff instructor)
-            : base(name, description)
+        private User instructor;
+        public PTrainer(int id,string name, string description, int who)
+            : base(id, name, description)
         {
-            this.instructor = instructor;
+            instructor = User.users[who];
         }
     }
 }
