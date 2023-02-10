@@ -117,7 +117,7 @@ bg=gray</panel_attributes>
       <x>510</x>
       <y>410</y>
       <w>400</w>
-      <h>260</h>
+      <h>280</h>
     </coordinates>
     <panel_attributes>/Activity/
 --
@@ -129,6 +129,7 @@ bg=gray</panel_attributes>
 -participantsLimit: int
 -participants: List&lt;Customer()&gt;
 -reservation: Reservation()
+-date: Calender()
 -
 +NewActivity(): void
 +EditActivity(): void
@@ -168,13 +169,12 @@ bg=gray</panel_attributes>
       <w>220</w>
       <h>100</h>
     </coordinates>
-    <panel_attributes>Calender
+    <panel_attributes>Calendar
 --
 timeFrom: DateTime()
 timeTo: DateTime()
-weekDay: WeekDay
 -
-+ViewCalender(): void
++ViewCalendar(): void
 </panel_attributes>
     <additional_attributes/>
   </element>
@@ -192,7 +192,7 @@ weekDay: WeekDay
 -name: string
 -description: string
 -owner: User()
--type: Reservable()
+-type: List&lt;Reservable()&gt;
 -date: Calender()
 -
 +NewReservation(): void
@@ -220,7 +220,7 @@ weekDay: WeekDay
       <w>30</w>
       <h>70</h>
     </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
   </element>
   <element>
@@ -408,8 +408,8 @@ Sunday
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>510</x>
-      <y>690</y>
+      <x>410</x>
+      <y>710</y>
       <w>240</w>
       <h>60</h>
     </coordinates>
@@ -418,5 +418,16 @@ Sunday
 +activities: List&lt;Activity&gt; {static}
 bg=blue</panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>700</x>
+      <y>680</y>
+      <w>290</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;120.0;270.0;120.0</additional_attributes>
   </element>
 </diagram>
