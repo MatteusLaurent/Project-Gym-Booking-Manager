@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using Gym_Booking_Manager.Reservations;
 using Gym_Booking_Manager.Users;
+using Gym_Booking_Manager.Calenda;
 
 namespace Gym_Booking_Manager.Activities
 {
     public class Activity
     {
         public static List<Activity> activities = new List<Activity>();
+        public static Calendar calendar { get; set; }
 
         public int id { get; set; }
         public string name { get; set; }
@@ -26,7 +28,6 @@ namespace Gym_Booking_Manager.Activities
             this.participantsLimit = participantsLimit;
             participants = new List<Customer>();
             this.reservation = reservation;
-
         }
         public void Load()
         {

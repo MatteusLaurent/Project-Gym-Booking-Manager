@@ -6,30 +6,35 @@ namespace Gym_Booking_Manager.Reservations
     public class Reservation
     {
         public static List<Reservation> reservations = new List<Reservation>();
+        public Calendar date { get; set; }
 
         public int id { get; set; }
         public string name { get; set; }
         public string description { get; set; }
         public User owner { get; set; }
-        public Reservable type { get; set; }
-        public Calendar date { get; set; }
+        public static List<Reservable> items = new List<Reservable>();
 
-        public Reservation(string name, string description, User owner, Reservable type, Calendar date)
+        public Reservation(string name, string description, User owner, Calendar date, List<Reservable> itemss)
         {
             id = 0; // IdCounter():
             this.name = name;
             this.description = description;
             this.owner = owner;
-            this.type = type;
+            items = itemss;
             this.date = date;
         }
-        public void Load()
+        public static void Load()
         {
             string[] lines = File.ReadAllLines("Reservations/Reservations.txt");
             foreach (string line in lines)
             {
+                List<Reservable> reservables = new List<Reservable>();
                 string[] strings = line.Split(";");
-                reservations.Add(new Reservation(strings[0], strings[1], User.users[int.Parse(strings[2])], Reservable.reservables[int.Parse(strings[3])], Calendar));
+                for (int i=4; i<lines.Length; i++)
+                {
+                    reservables.Add(Reservable.reservables[int.Parse(strings[i])]);
+                }
+                reservations.Add(new Reservation(strings[0], strings[1], User.users[int.Parse(strings[2])], new Calendar(DateTime.Parse(strings[3]), DateTime.Parse(strings[3])), reservables));
             }
         }
         public void NewReservation()
@@ -52,16 +57,14 @@ namespace Gym_Booking_Manager.Reservations
         int id;
         string name;
         string description;
-        bool reserved;
-        public Reservable(string name, string description, bool reserved)
+        List<Reservation> reserved;
+        public Reservable(string name, string description, List<Reservation> reserved)
         {
             id = 0; // IdCounter():
 
             this.name = name;
             this.description = description;
             this.reserved = reserved;
-
-            reservables.Add(this);
         }
         public void NewReservable()
         {
@@ -79,7 +82,7 @@ namespace Gym_Booking_Manager.Reservations
     public class Equipment : Reservable
     {
         private string type;
-        public Equipment(string name, string description, bool reserved, string type)
+        public Equipment(string name, string description, List<Reservation> reserved, string type)
             : base(name, description, reserved)
         {
             this.type = type;
@@ -88,7 +91,7 @@ namespace Gym_Booking_Manager.Reservations
     public class Space : Reservable
     {
         private string type;
-        public Space(string name, string description, bool reserved, string type)
+        public Space(string name, string description, List<Reservation> reserved, string type)
             : base(name, description, reserved)
         {
             this.type = type;
@@ -97,7 +100,7 @@ namespace Gym_Booking_Manager.Reservations
     public class PTrainer : Reservable
     {
         private Staff instructor;
-        public PTrainer(string name, string description, bool reserved, Staff instructor)
+        public PTrainer(string name, string description, List<Reservation> reserved, Staff instructor)
             : base(name, description, reserved)
         {
             this.instructor = instructor;
