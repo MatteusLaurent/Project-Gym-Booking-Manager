@@ -12,6 +12,7 @@ namespace Gym_Booking_Manager
         {
             int activeUser;
             User.Load();
+            Reservable.Load();
             Reservation.Load();
             activeUser = User.LogIn();
             User.users[activeUser].Menu();

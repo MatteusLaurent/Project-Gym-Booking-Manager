@@ -65,6 +65,12 @@ namespace Gym_Booking_Manager.Reservations
             this.description = description;
             reservations = new List<Reservation>();
         }
+        public Reservable(int id)
+        {
+            this.id = id;
+            this.name = "";
+            this.description = "";
+        }
         public static void Load()
         {
             string[] lines = File.ReadAllLines("Reservations/Reservables.txt");
@@ -73,7 +79,7 @@ namespace Gym_Booking_Manager.Reservations
                 string[] strings = line.Split(";");
                 if (strings[0]=="Equipment")reservables.Add(new Equipment(int.Parse(strings[1]), strings[2], strings[3]));
                 if (strings[0] == "Space") reservables.Add(new Space(int.Parse(strings[1]), strings[2], strings[3]));
-                if (strings[0] == "PTrainer") reservables.Add(new PTrainer(int.Parse(strings[1]), strings[2], strings[3], int.Parse(strings[4])));
+                if (strings[0] == "PTrainer") reservables.Add(new PTrainer(int.Parse(strings[1]), int.Parse(strings[2])));
             }
         }
         public void NewReservable()
@@ -102,10 +108,10 @@ namespace Gym_Booking_Manager.Reservations
     public class PTrainer : Reservable
     {
         private User instructor;
-        public PTrainer(int id,string name, string description, int who)
-            : base(id, name, description)
+        public PTrainer(int id, int who)
+            : base(id)
         {
-            instructor = User.users[who];
+            this.instructor = User.users[who];
         }
     }
 }

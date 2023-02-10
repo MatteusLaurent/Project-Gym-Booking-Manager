@@ -1,2 +1,3 @@
-﻿Equipment;Hantel;50 kg;;
-Space;Grupprum;max 30 pers;;
+﻿Equipment;0;Hantel;50 kg
+Space;1;Grupprum;max 30 pers
+PTrainer;2;1
