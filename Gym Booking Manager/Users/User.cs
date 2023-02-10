@@ -103,10 +103,8 @@ namespace Gym_Booking_Manager.Users
         public void SaveUsers()
         {
             string[] lines = File.ReadAllLines("Users/Users.txt");
-            int nextLine = lines.Length + 1;
             using (StreamWriter writer = new StreamWriter("Users/Users.txt", true))
             writer.WriteLine($"Customer;{User.users[User.users.Count()-1].id};{User.users[User.users.Count() - 1].name};{User.users[User.users.Count() - 1].ssn};{User.users[User.users.Count() - 1].phone};{User.users[User.users.Count() - 1].email};{User.users[User.users.Count() - 1].loginName};{User.users[User.users.Count() - 1].loginPass};{DateTime.Now};{User.users[User.users.Count() - 1].MembershipEndDate};True");
-
         }
         public abstract void Menu();
     }
@@ -154,7 +152,6 @@ namespace Gym_Booking_Manager.Users
             int nextID = GetNextID();
             Customer customer = new Customer(nextID, name, ssn, phone, email, loginName, loginPass, DateTime.Now, membershipDuration, true);
             users.Add(customer);
-            Console.WriteLine(users.Count());
             SaveUsers();
         }
         public void UnregisterUser() { }
