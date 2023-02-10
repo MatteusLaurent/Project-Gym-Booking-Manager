@@ -28,7 +28,7 @@ namespace Gym_Booking_Manager.Activities
             participants = new List<Customer>();
             this.reservation = reservation;
         }
-        public void Load() // TODO: Add Calender arg to constructor!
+        public static void Load() // TODO: Add Calender arg to constructor!
         {
             string[] lines = File.ReadAllLines("Activities/Activities.txt");
              foreach (string line in lines)
