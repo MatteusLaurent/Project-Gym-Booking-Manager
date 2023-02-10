@@ -4,10 +4,14 @@ using Gym_Booking_Manager.Users;
 namespace Gym_Booking_Manager.Calendars
 {
     public class Calendar
-    {        
+    {
         public DateTime timeFrom { get; set; }
         public DateTime timeTo { get; set; }
 
+        public Calendar(DateTime start, DateTime end)
+        {
+            this.timeFrom = timeFrom;
+            this.timeTo = timeTo;
         }
         public static void ViewCalender()
         {
@@ -18,7 +22,7 @@ namespace Gym_Booking_Manager.Calendars
             {
                 ViewCalenderWeek();
             }
-            else if (keyPressed.Key == ConsoleKey.D2 || keyPressed.Key == ConsoleKey.NumPad2) 
+            else if (keyPressed.Key == ConsoleKey.D2 || keyPressed.Key == ConsoleKey.NumPad2)
             {
                 ViewCalenderMonth();
             }
@@ -26,7 +30,7 @@ namespace Gym_Booking_Manager.Calendars
             {
                 Console.WriteLine("View calendar cancelled!");
             }
-            else 
+            else
             {
                 Console.WriteLine($"Invalid option ({keyPressed.Key}), view calender cancelled.");
             }
@@ -34,10 +38,10 @@ namespace Gym_Booking_Manager.Calendars
         public static void ViewCalenderWeek()
         {
 
-    public Calendar(DateTime start, DateTime end)
+        }
+        public static void ViewCalenderMonth()
         {
-            this.timeFrom = timeFrom;
-            this.timeTo = timeTo;
+
         }
     }
 }

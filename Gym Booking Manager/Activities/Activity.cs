@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using Gym_Booking_Manager.Reservations;
 using Gym_Booking_Manager.Users;
-using Gym_Booking_Manager.Calenda;
+using Gym_Booking_Manager.Calendars;
 
 namespace Gym_Booking_Manager.Activities
 {
     public class Activity
     {
         public static List<Activity> activities = new List<Activity>();
-        public static Calendar calendar { get; set; }
 
         public int id { get; set; }
         public string name { get; set; }
@@ -19,7 +18,8 @@ namespace Gym_Booking_Manager.Activities
         public int participantsLimit { get; set; }
         public List<Customer> participants { get; set; }
         public Reservation reservation { get; set; }
-        public Activity(string name, string description, bool open, User instructor, int participantsLimit, Reservation reservation)
+        public Calendar calendar { get; set; }
+        public Activity(string name, string description, bool open, User instructor, int participantsLimit, Reservation reservation, Calendar calender)
         {
             this.name = name;
             this.description = description;
@@ -28,14 +28,15 @@ namespace Gym_Booking_Manager.Activities
             this.participantsLimit = participantsLimit;
             participants = new List<Customer>();
             this.reservation = reservation;
+            this.calendar = calender;
         }
-        public void Load()
+        public void Load() // TODO: Add Calender arg to constructor!
         {
             string[] lines = File.ReadAllLines("Activities/Activities.txt");
              foreach (string line in lines)
              {
                 string[] strings = line.Split(";");
-                activities.Add(new Activity(strings[0], strings[1], bool.Parse(strings[2]), User.users[int.Parse(strings[3])], int.Parse(strings[4]), Reservation.reservations[int.Parse(strings[5])]));
+                // activities.Add(new Activity(strings[0], strings[1], bool.Parse(strings[2]), User.users[int.Parse(strings[3])], int.Parse(strings[4]), Reservation.reservations[int.Parse(strings[5])]));
              }
         }
 
