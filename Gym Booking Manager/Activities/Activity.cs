@@ -2,23 +2,25 @@
 using System.Collections.Generic;
 using Gym_Booking_Manager.Reservations;
 using Gym_Booking_Manager.Users;
+using Gym_Booking_Manager.Calenda;
 
-namespace Gym_Booking_Manager.Functionality
+namespace Gym_Booking_Manager.Activities
 {
     public class Activity
     {
         public static List<Activity> activities = new List<Activity>();
+        public static Calendar calendar { get; set; }
 
         public int id { get; set; }
         public string name { get; set; }
         public string description { get; set; }
         public bool open { get; set; }
-        public PTrainer instructor { get; set; }
+        public User instructor { get; set; }
         public int participantsLimit { get; set; }
         public List<Customer> participants { get; set; }
         public Reservation reservation { get; set; }
-        public Activity(string name, string description, bool open, PTrainer instructor, int participantsLimit, Reservation reservation) 
-        { 
+        public Activity(string name, string description, bool open, User instructor, int participantsLimit, Reservation reservation)
+        {
             this.name = name;
             this.description = description;
             this.open = open;
@@ -26,8 +28,15 @@ namespace Gym_Booking_Manager.Functionality
             this.participantsLimit = participantsLimit;
             participants = new List<Customer>();
             this.reservation = reservation;
-
-            activities.Add(this);
+        }
+        public void Load()
+        {
+            string[] lines = File.ReadAllLines("Activities/Activities.txt");
+             foreach (string line in lines)
+             {
+                string[] strings = line.Split(";");
+                activities.Add(new Activity(strings[0], strings[1], bool.Parse(strings[2]), User.users[int.Parse(strings[3])], int.Parse(strings[4]), Reservation.reservations[int.Parse(strings[5])]));
+             }
         }
 
         public void NewActivity()

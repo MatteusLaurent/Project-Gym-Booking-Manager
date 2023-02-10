@@ -14,7 +14,7 @@ namespace Gym_Booking_Manager.Reservations
         public List<Reservable> reservableList { get; set; }
         public Calendar date { get; set; }
 
-        public Reservation(string name, string description, User owner, Reservable type, Calendar date)
+        public Reservation(string name, string description, User owner, Calendar date, List<Reservable> itemss)
         {
             id = 0; // IdCounter():
             this.name = name;
@@ -22,8 +22,20 @@ namespace Gym_Booking_Manager.Reservations
             this.owner = owner;
             this.reservableList = reservableList;
             this.date = date;
-
-            reservations.Add(this);
+        }
+        public static void Load()
+        {
+            string[] lines = File.ReadAllLines("Reservations/Reservations.txt");
+            foreach (string line in lines)
+            {
+                List<Reservable> reservables = new List<Reservable>();
+                string[] strings = line.Split(";");
+                for (int i=4; i<lines.Length; i++)
+                {
+                    reservables.Add(Reservable.reservables[int.Parse(strings[i])]);
+                }
+                reservations.Add(new Reservation(strings[0], strings[1], User.users[int.Parse(strings[2])], new Calendar(DateTime.Parse(strings[3]), DateTime.Parse(strings[3])), reservables));
+            }
         }
         public void NewReservation()
         {

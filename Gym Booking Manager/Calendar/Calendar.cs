@@ -1,13 +1,12 @@
 ﻿using Gym_Booking_Manager.Reservations;
+using Gym_Booking_Manager.Users;
 
 namespace Gym_Booking_Manager.Calendars
 {
     public class Calendar
-    {
-        private DateTime timeFrom;
-        private DateTime timeTo;
-        public Calendar()
-        {
+    {        
+        public DateTime timeFrom { get; set; }
+        public DateTime timeTo { get; set; }
 
         }
         public static void ViewCalender()
@@ -35,10 +34,11 @@ namespace Gym_Booking_Manager.Calendars
         public static void ViewCalenderWeek()
         {
 
-        }
-        public static void ViewCalenderMonth()
+    public Calendar(DateTime start, DateTime end)
         {
-
+            this.timeFrom = timeFrom;
+            this.timeTo = timeTo;
         }
     }
 }
+
