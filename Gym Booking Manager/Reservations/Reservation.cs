@@ -92,7 +92,7 @@ namespace Gym_Booking_Manager.Reservations
             {
                 string[] strings = line.Split(";");
                 if (strings[0]=="Equipment")reservables.Add(new Equipment(int.Parse(strings[1]), strings[2], strings[3]));
-                if (strings[0] == "Space") reservables.Add(new Space(int.Parse(strings[1]), strings[2], strings[3]));
+                if (strings[0] == "Space") reservables.Add(new Space(int.Parse(strings[1]), strings[2], strings[3]), int.Parse(strings[4]));
                 if (strings[0] == "PTrainer") reservables.Add(new PTrainer(int.Parse(strings[1]), int.Parse(strings[2])));
             }
         }
@@ -116,8 +116,9 @@ namespace Gym_Booking_Manager.Reservations
     }
     public class Space : Reservable
     {
-        public Space(int id,string name, string description)
-            : base(id, name, description) { }
+        int capacity { get; set; }
+        public Space(int id,string name, string description, int capacity)
+            : base(id, name, description) { this.capacity = capacity; }
     }
     public class PTrainer : Reservable
     {
