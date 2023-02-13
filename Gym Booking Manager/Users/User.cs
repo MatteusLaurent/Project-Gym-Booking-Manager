@@ -1,3 +1,4 @@
+using Gym_Booking_Manager.Reservations;
 namespace Gym_Booking_Manager.Users
 {
     public abstract class User
@@ -159,7 +160,6 @@ namespace Gym_Booking_Manager.Users
         public void UnregisterUser() { }
         public void ManageAccounts() { }
         public void CancelActivity() { }
-        public void RegisterReservable() { }
         public override void Menu()
         {
             bool go = true;
@@ -182,7 +182,7 @@ namespace Gym_Booking_Manager.Users
                         CancelActivity();
                         break;
                     case "5":
-                        RegisterReservable();
+                        Reservable.NewReservable();
                         break;
                     case "6":
                         Console.WriteLine("Hej då!");
