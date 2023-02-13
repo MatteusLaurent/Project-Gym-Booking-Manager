@@ -59,7 +59,7 @@ namespace Gym_Booking_Manager.Users
             int tries = 5;
             while (result == -1)
             {
-                Console.WriteLine("Skriv in username");
+                Console.Write("Skriv in användarnamn: ");
                 string username = Console.ReadLine();
                 foreach (User user in users)
                 {
@@ -68,18 +68,20 @@ namespace Gym_Booking_Manager.Users
                         result = user.id;
                     }
                 }
-                if (result == -1) Console.WriteLine("Felaktigt username ");
+                Console.Clear();
+                if (result == -1) Console.WriteLine("Felaktigt användarnamn!");
             }
             while (true)
             {
-                Console.WriteLine("Skriv in password");
+                Console.WriteLine("Skriv in lösenord:");
                 string input = Console.ReadLine();
                 if (input == users[result].loginPass)
                 {
                     Console.WriteLine("Välkommen " + users[result].name);
                     break;
                 }
-                Console.WriteLine("Felaktigt password " + tries + " försök kvar");
+                Console.Clear();
+                Console.WriteLine("Felaktigt lösenord " + tries + " försök kvar");
                 tries--;
                 if (tries == 0)
                 {
@@ -156,12 +158,14 @@ namespace Gym_Booking_Manager.Users
         }
         public void UnregisterUser() { }
         public void ManageAccounts() { }
+        public void CancelActivity() { }
+        public void RegisterReservable() { }
         public override void Menu()
         {
             bool go = true;
             while (go == true)
             {
-                Console.WriteLine("Skriv 1 för Register user, 2 för Unregister User, 3 för Manage account, 4 för Avboka aktiviteter, 5 Registerara artiklar, 6 Exit");
+                Console.WriteLine("Skriv 1 för Registrera användare, 2 för Avregisterera användare, 3 för Kontohantering, 4 för Avboka aktiviteter, 5 Registerara artiklar, 6 Avsluta");
                 string input = Console.ReadLine();
                 switch (input)
                 {
@@ -175,14 +179,17 @@ namespace Gym_Booking_Manager.Users
                         ManageAccounts();
                         break;
                     case "4":
-                        //
+                        CancelActivity();
                         break;
                     case "5":
-                        //
+                        RegisterReservable();
                         break;
                     case "6":
                         Console.WriteLine("Hej då!");
                         go = false;
+                        break;
+                    default:
+                        Console.WriteLine("Felaktigt val!");
                         break;
                 }
             }
@@ -214,12 +221,73 @@ namespace Gym_Booking_Manager.Users
         {
 
         }
-        public override void Menu() { }
+        public void BookActivity()
+        {
+
+        }
+        public void ListActivity()
+        {
+
+        }
+        public void CancelActivity()
+        {
+
+        }
+        public override void Menu() 
+        {
+            bool go = true;
+            while (go == true)
+            {
+                Console.WriteLine("Skriv 1 för att boka aktivitet, 2 för att lista bokade aktiviteter, 3 för att avboka aktiviteter, 4 Avsluta");
+                string input = Console.ReadLine();
+                switch (input)
+                {
+                    case "1":
+                        BookActivity();
+                        break;
+                    case "2":
+                        ListActivity();
+                        break;
+                    case "3":
+                        CancelActivity();
+                        break;
+                    case "4":
+                        Console.WriteLine("Hej då!");
+                        go = false;
+                        break;
+                    default:
+                        Console.WriteLine("Felaktigt val!");
+                        break;
+                }
+            }
+        }
     }
     public class Admin : User
     {
         public Admin(int id, string name, int ssn, string phone, string email, string loginName, string loginPass)
             : base(id, name, ssn, phone, email, loginName, loginPass) { }
-        public override void Menu() { }
+        public void ListLog() { }
+        public override void Menu() 
+        {
+            bool go = true;
+            while (go == true)
+            {
+                Console.WriteLine("Skriv 1 för att kolla logg, 2 Avsluta");
+                string input = Console.ReadLine();
+                switch (input)
+                {
+                    case "1":
+                        ListLog();
+                        break;
+                    case "2":
+                        Console.WriteLine("Hej då!");
+                        go = false;
+                        break;
+                    default:
+                        Console.WriteLine("Felaktigt val!");
+                        break;
+                }
+            }
+        }
     }
 }

@@ -37,6 +37,20 @@ namespace Gym_Booking_Manager.Reservations
                 reservations.Add(new Reservation(strings[0], strings[1], User.users[int.Parse(strings[2])], new Calendar(DateTime.Parse(strings[3]), DateTime.Parse(strings[3])), reservables));
             }
         }
+        public void SaveReservation()
+        {
+
+            string[] lines = File.ReadAllLines("Reservations/Reservations.txt");
+            string itemsReserved="";
+            for(int i=0; i< Reservation.reservations[Reservation.reservations.Count() - 1].reservableList.Count(); i++)
+            {
+                if(Reservation.reservations[Reservation.reservations.Count() - 1].reservableList.Count()-1==i) itemsReserved=itemsReserved+ Reservation.reservations[Reservation.reservations.Count() - 1].reservableList[i].id;
+                else itemsReserved = itemsReserved+ Reservation.reservations[Reservation.reservations.Count() - 1].reservableList[i].id + ";";
+
+            }
+            using (StreamWriter writer = new StreamWriter("Reservations/Reservations.txt", true))            
+            writer.WriteLine($"{Reservation.reservations[Reservation.reservations.Count() - 1].name};{Reservation.reservations[Reservation.reservations.Count() - 1].description};{User.users[Reservation.reservations.Count() - 1].id};{Reservation.reservations[Reservation.reservations.Count() - 1].date.timeFrom};{Reservation.reservations[Reservation.reservations.Count() - 1].date.timeTo}+{itemsReserved}");
+        }
         public void NewReservation()
         {
             // Register new reservations to list.
@@ -54,10 +68,10 @@ namespace Gym_Booking_Manager.Reservations
     {
         public static List<Reservable> reservables = new List<Reservable>();
 
-        int id;
-        string name;
-        string description;
-        List<Reservation> reservations;
+        public int id { get; set; }
+        string name { get; set; }
+        string description { get; set; }
+        List<Reservation> reservations { get; set; }
         public Reservable(int id,string name, string description)
         {
             this.id = id; // IdCounter():
