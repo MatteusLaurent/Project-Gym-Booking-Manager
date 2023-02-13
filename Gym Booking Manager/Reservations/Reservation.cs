@@ -14,9 +14,9 @@ namespace Gym_Booking_Manager.Reservations
         public List<Reservable> reservableList { get; set; }
         public Calendar date { get; set; }
 
-        public Reservation(string name, string description, User owner, Calendar date, List<Reservable> reservableList)
+        public Reservation(int id, string name, string description, User owner, Calendar date, List<Reservable> reservableList)
         {
-            id = 0; // IdCounter():
+            this.id = id; // IdCounter():
             this.name = name;
             this.description = description;
             this.owner = owner;
@@ -34,7 +34,7 @@ namespace Gym_Booking_Manager.Reservations
                 {
                     reservables.Add(Reservable.reservables[int.Parse(strings[i])]);
                 }
-                reservations.Add(new Reservation(strings[0], strings[1], User.users[int.Parse(strings[2])], new Calendar(DateTime.Parse(strings[3]), DateTime.Parse(strings[3])), reservables));
+                reservations.Add(new Reservation(int.Parse(strings[0]),strings[1], strings[2], User.users[int.Parse(strings[3])], new Calendar(DateTime.Parse(strings[4]), DateTime.Parse(strings[5])), reservables));
             }
         }
         public void Save()
