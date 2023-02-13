@@ -152,7 +152,7 @@ namespace Gym_Booking_Manager.Users
             }
             DateTime MembershipEndDate = membershipDuration;
             int nextID = GetNextID();
-            Customer customer = new Customer(nextID, name, ssn.ToString(), phone, email, loginName, loginPass, DateTime.Now, membershipDuration, true);
+            Customer customer = new Customer(nextID, name, ssn, phone, email, loginName, loginPass, DateTime.Now, membershipDuration, true);
             users.Add(customer);
             SaveUsers();
         }
