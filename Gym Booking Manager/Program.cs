@@ -57,18 +57,18 @@ namespace Gym_Booking_Manager
 
             Calendars.Calendar.ViewCalender();
 
-            GBMLogger logger = new GBMLogger("GBMLogger.txt");
-            int activeUser=-1;
-            User.Load();
-            logger.LogActivity("User is loaded");
-            //Reservable.Load();
-            logger.LogActivity("Reservable is loaded");
-            Reservation.Load();
-            logger.LogActivity("Reservation is loaded");
-            Activity.Load();            
-            logger.LogActivity("Activity is loaded");
-            activeUser = User.LogIn();
-            if(activeUser!=-1)User.users[activeUser].Menu();
+            //GBMLogger logger = new GBMLogger("GBMLogger.txt");
+            //int activeUser=-1;
+            //User.Load();
+            //logger.LogActivity("User is loaded");
+            ////Reservable.Load();
+            //logger.LogActivity("Reservable is loaded");
+            //Reservation.Load();
+            //logger.LogActivity("Reservation is loaded");
+            //Activity.Load();            
+            //logger.LogActivity("Activity is loaded");
+            //activeUser = User.LogIn();
+            //if(activeUser!=-1)User.users[activeUser].Menu();
         }
     }
 }

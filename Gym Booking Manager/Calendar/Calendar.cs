@@ -18,7 +18,7 @@ namespace Gym_Booking_Manager.Calendars
         public static void ViewCalender()
         {
             ConsoleKeyInfo keyPressed;
-            Console.WriteLine("<< ACTIVITY CALENDAR >>\n(Press an appropriate key)\n[1] - View weekly calendar.\n[2] - View monthly calendar.\n[ESC] - Cancel.");
+            Console.WriteLine("<< ACTIVITY CALENDAR >>\n  (Select an option!)\n\n[1] - View weekly calendar.\n[2] - View monthly calendar.\n[ESC] - Cancel.");
             keyPressed = Console.ReadKey(true);
             if (keyPressed.Key == ConsoleKey.D1 || keyPressed.Key == ConsoleKey.NumPad1)
             {
@@ -54,15 +54,46 @@ namespace Gym_Booking_Manager.Calendars
                 switch (keyPressed.Key)
                 {
                     case ConsoleKey.LeftArrow:
-                        currentWeek -= 1;
-                        ViewCalendarWeek(currentWeek);
+                        try
+                        {
+                            currentWeek -= 1;
+                            ViewCalendarWeek(currentWeek);
+                        }
+                        catch (ArgumentOutOfRangeException) 
+                        { 
+                            Console.WriteLine("System.ArgumentOutOfRangeException: Week parameter must be between 1 to 53.");
+                            escape = true;
+                            break;
+                        }
                         break;
                     case ConsoleKey.RightArrow:
-                        currentWeek += 1;
-                        ViewCalendarWeek(currentWeek);
+                        try
+                        {
+                            currentWeek += 1;
+                            ViewCalendarWeek(currentWeek);
+                        }
+                        catch (ArgumentOutOfRangeException)
+                        {
+                            Console.WriteLine("System.ArgumentOutOfRangeException: Week parameter must be between 1 to 53.");
+                            escape = true;
+                            break;
+                        }
                         break;
                     case ConsoleKey.V:
 
+                        break;
+                    case ConsoleKey.D:
+                        Console.WriteLine("Select a day to view:");
+                        Console.WriteLine("[1] - Monday");
+                        Console.WriteLine("[2] - Tuesday");
+                        Console.WriteLine("[3] - Wednesday");
+                        Console.WriteLine("[4] - Thursday");
+                        Console.WriteLine("[5] - Friday");
+                        Console.WriteLine("[6] - Saturday");
+                        Console.WriteLine("[7] - Sunday");
+
+                        keyPressed = Console.ReadKey(true);
+                        //ViewWeekDay(currentWeek, keyPressed.Key);
                         break;
                     case ConsoleKey.Escape:
                         escape = true;
@@ -95,7 +126,7 @@ namespace Gym_Booking_Manager.Calendars
             DateTime sunday = ISOWeek.ToDateTime(currentYear, weekNumber, DayOfWeek.Sunday);
 
             Console.Clear();
-            Console.WriteLine($"<< ACTIVITY WEEK {weekNumber} CALENDAR >>\n");
+            Console.WriteLine($"{"", -42}<< ACTIVITY CALENDAR, WEEK {weekNumber} >>\n");
             Console.WriteLine($"|{"",-6}|{monday.ToShortDateString(),-14}|{tuesday.ToShortDateString(),-14}|{wednesday.ToShortDateString(),-14}|{thursday.ToShortDateString(),-14}|{friday.ToShortDateString(),-14}|{saturday.ToShortDateString(),-14}|{sunday.ToShortDateString(),-14}|");
             Console.WriteLine($"|{"TIME",-6}|{"MONDAY",-14}|{"TUESDAY",-14}|{"WEDNESDAY",-14}|{"THURSDAY",-14}|{"FRIDAY",-14}|{"SATURDAY",-14}|{"SUNDAY",-14}|");
             Console.WriteLine($"|------|--------------|--------------|--------------|--------------|--------------|--------------|--------------|");
