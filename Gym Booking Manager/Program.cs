@@ -30,11 +30,11 @@ namespace Gym_Booking_Manager
             // TEST CALENDER:
             var dateA = new DateTime(2023, 02, 17, 8, 0, 0);
             var dateAa = dateA.AddHours(2);
-            var dateB = new DateTime(2023, 02, 16, 8, 0, 0);
+            var dateB = new DateTime(2023, 02, 16, 12, 0, 0);
             var dateBb = dateA.AddHours(1);
-            var dateC = new DateTime(2023, 02, 14, 8, 0, 0);
+            var dateC = new DateTime(2023, 02, 17, 8, 0, 0);
             var dateCc = dateA.AddHours(3);
-            var dateD = new DateTime(2023, 02, 13, 8, 0, 0);
+            var dateD = new DateTime(2023, 02, 13, 10, 0, 0);
             var dateDd = dateA.AddHours(4);
             var dateE = new DateTime(2023, 02, 16, 16, 0, 0);
             var dateEe = dateE.AddHours(1);
@@ -56,7 +56,9 @@ namespace Gym_Booking_Manager
             Reservation.reservations.Add(resD);
             Reservation.reservations.Add(resE);
 
-            Calendars.Calendar.SortReservationWeek(7);
+            Calendars.Calendar.ViewCalender();
+
+            //Calendars.Calendar.SortReservationWeek(7);
 
             //Console.WriteLine($"{resA.date.timeFrom.DayOfWeek} Week: {ISOWeek.GetWeekOfYear(resA.date.timeFrom)}");
             //Console.WriteLine($"{resB.date.timeFrom.DayOfWeek} Week: {ISOWeek.GetWeekOfYear(resB.date.timeFrom)}");
