@@ -2,6 +2,7 @@
 using Gym_Booking_Manager.Users;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Reflection.Metadata;
 
 namespace Gym_Booking_Manager.Calendars
 {
@@ -15,38 +16,43 @@ namespace Gym_Booking_Manager.Calendars
             this.timeFrom = timeFrom;
             this.timeTo = timeTo;
         }
-        public static void ViewCalender()
+        public static void ViewCalendarMenu()
         {
             ConsoleKeyInfo keyPressed;
-            Console.WriteLine("<< ACTIVITY CALENDAR >>\n  (Select an option!)\n\n[1] - View weekly calendar.\n[2] - View monthly calendar.\n[ESC] - Cancel.");
+
+            Console.WriteLine($"<< ACTIVITY CALENDAR >>\n\n>> Select an option!\n{"- [1]",-8}View weekly calendar.\n{"- [2]",-8}View monthly calendar.\n{"- [ESC]",-8}Cancel.");
+
+
             keyPressed = Console.ReadKey(true);
             if (keyPressed.Key == ConsoleKey.D1 || keyPressed.Key == ConsoleKey.NumPad1)
             {
+                Task.Delay(250).Wait();
                 SelectCalendarWeek();
             }
             else if (keyPressed.Key == ConsoleKey.D2 || keyPressed.Key == ConsoleKey.NumPad2)
             {
+                Task.Delay(250).Wait();
                 ViewCalendarMonth();
             }
             else if (keyPressed.Key == ConsoleKey.Escape)
             {
-                Console.WriteLine("View calendar cancelled!");
+                Console.WriteLine(">> View calendar cancelled!");
                 Task.Delay(500).Wait();
             }
             else
             {
-                Console.WriteLine($"Invalid key option [{keyPressed.Key}], view calendar cancelled.");
+                Console.WriteLine($">> Invalid key option: [{keyPressed.Key}], view calendar canceller!");
                 Task.Delay(500).Wait();
             }
+
         }
         private static void SelectCalendarWeek()
         {
+            int currentYear = ISOWeek.GetYear(DateTime.Now);
             int currentWeek = ISOWeek.GetWeekOfYear(DateTime.Now);
             bool escape = false;
-            int posX, posY;
-            (posX, posY) = Console.GetCursorPosition();
 
-            ViewCalendarWeek(currentWeek);
+            ViewCalendarWeek(currentYear, currentWeek);
 
             while (!escape)
             {
@@ -57,11 +63,11 @@ namespace Gym_Booking_Manager.Calendars
                         try
                         {
                             currentWeek -= 1;
-                            ViewCalendarWeek(currentWeek);
+                            ViewCalendarWeek(currentYear, currentWeek);
                         }
-                        catch (ArgumentOutOfRangeException) 
-                        { 
-                            Console.WriteLine("System.ArgumentOutOfRangeException: Week parameter must be between 1 to 53.");
+                        catch (System.ArgumentOutOfRangeException)
+                        {
+                            Console.WriteLine(">> System.ArgumentOutOfRangeException: The week parameter must be in the range 1 through 53. (Parameter 'week')");
                             escape = true;
                             break;
                         }
@@ -70,11 +76,11 @@ namespace Gym_Booking_Manager.Calendars
                         try
                         {
                             currentWeek += 1;
-                            ViewCalendarWeek(currentWeek);
+                            ViewCalendarWeek(currentYear, currentWeek);
                         }
-                        catch (ArgumentOutOfRangeException)
+                        catch (System.ArgumentOutOfRangeException)
                         {
-                            Console.WriteLine("System.ArgumentOutOfRangeException: Week parameter must be between 1 to 53.");
+                            Console.WriteLine(">> System.ArgumentOutOfRangeException: The week parameter must be in the range 1 through 53. (Parameter 'week')");
                             escape = true;
                             break;
                         }
@@ -83,17 +89,18 @@ namespace Gym_Booking_Manager.Calendars
 
                         break;
                     case ConsoleKey.D:
-                        Console.WriteLine("Select a day to view:");
-                        Console.WriteLine("[1] - Monday");
-                        Console.WriteLine("[2] - Tuesday");
-                        Console.WriteLine("[3] - Wednesday");
-                        Console.WriteLine("[4] - Thursday");
-                        Console.WriteLine("[5] - Friday");
-                        Console.WriteLine("[6] - Saturday");
-                        Console.WriteLine("[7] - Sunday");
+                        Console.WriteLine("\n>> Select a day to view:");
+                        Console.WriteLine($"{"- [1]",-8}Monday");
+                        Console.WriteLine($"{"- [2]",-8}Tuesday");
+                        Console.WriteLine($"{"- [3]",-8}Wednesday");
+                        Console.WriteLine($"{"- [4]",-8}Thursday");
+                        Console.WriteLine($"{"- [5]",-8}Friday");
+                        Console.WriteLine($"{"- [6]",-8}Saturday");
+                        Console.WriteLine($"{"- [7]",-8}Sunday");
+                        Console.WriteLine();
 
                         keyPressed = Console.ReadKey(true);
-                        //ViewWeekDay(currentWeek, keyPressed.Key);
+                        ViewWeekDay(currentYear, currentWeek, keyPressed);
                         break;
                     case ConsoleKey.Escape:
                         escape = true;
@@ -106,30 +113,29 @@ namespace Gym_Booking_Manager.Calendars
         {
 
         }
-        private static void ViewCalendarWeek(int weekNumber)
+        private static void ViewCalendarWeek(int year, int week)
         {
-            int currentYear = ISOWeek.GetYear(DateTime.Now);
-            int posX, posY;
-
             // Filtering Reservation.reservations list based on weekNr of date.timeFrom
-            List<Reservation> weekReservations = Reservation.reservations.Where(w => ISOWeek.GetWeekOfYear(w.date.timeFrom) == weekNumber).ToList();
+            List<Reservation> weekReservations = Reservation.reservations.Where(w => ISOWeek.GetWeekOfYear(w.date.timeFrom) == week).ToList();
 
             // Sorting Reservation.reservations list based on date.timeFrom.
             weekReservations.Sort((x, y) => x.date.timeFrom.CompareTo(y.date.timeFrom));
 
-            DateTime monday = ISOWeek.ToDateTime(currentYear, weekNumber, DayOfWeek.Monday);
-            DateTime tuesday = ISOWeek.ToDateTime(currentYear, weekNumber, DayOfWeek.Tuesday);
-            DateTime wednesday = ISOWeek.ToDateTime(currentYear, weekNumber, DayOfWeek.Wednesday);
-            DateTime thursday = ISOWeek.ToDateTime(currentYear, weekNumber, DayOfWeek.Thursday);
-            DateTime friday = ISOWeek.ToDateTime(currentYear, weekNumber, DayOfWeek.Friday);
-            DateTime saturday = ISOWeek.ToDateTime(currentYear, weekNumber, DayOfWeek.Saturday);
-            DateTime sunday = ISOWeek.ToDateTime(currentYear, weekNumber, DayOfWeek.Sunday);
+            DateTime monday = ISOWeek.ToDateTime(year, week, DayOfWeek.Monday);
+            DateTime tuesday = ISOWeek.ToDateTime(year, week, DayOfWeek.Tuesday);
+            DateTime wednesday = ISOWeek.ToDateTime(year, week, DayOfWeek.Wednesday);
+            DateTime thursday = ISOWeek.ToDateTime(year, week, DayOfWeek.Thursday);
+            DateTime friday = ISOWeek.ToDateTime(year, week, DayOfWeek.Friday);
+            DateTime saturday = ISOWeek.ToDateTime(year, week, DayOfWeek.Saturday);
+            DateTime sunday = ISOWeek.ToDateTime(year, week, DayOfWeek.Sunday);
 
             Console.Clear();
-            Console.WriteLine($"{"", -42}<< ACTIVITY CALENDAR, WEEK {weekNumber} >>\n");
+            Console.WriteLine($"{"",-42}<< ACTIVITY CALENDAR, WEEK {week} >>\n");
             Console.WriteLine($"|{"",-6}|{monday.ToShortDateString(),-14}|{tuesday.ToShortDateString(),-14}|{wednesday.ToShortDateString(),-14}|{thursday.ToShortDateString(),-14}|{friday.ToShortDateString(),-14}|{saturday.ToShortDateString(),-14}|{sunday.ToShortDateString(),-14}|");
             Console.WriteLine($"|{"TIME",-6}|{"MONDAY",-14}|{"TUESDAY",-14}|{"WEDNESDAY",-14}|{"THURSDAY",-14}|{"FRIDAY",-14}|{"SATURDAY",-14}|{"SUNDAY",-14}|");
             Console.WriteLine($"|------|--------------|--------------|--------------|--------------|--------------|--------------|--------------|");
+
+            int posX, posY;
             (posX, posY) = Console.GetCursorPosition();
 
             for (int i = 0; i < 12; i++)
@@ -178,6 +184,36 @@ namespace Gym_Booking_Manager.Calendars
             }
             Console.WriteLine($"\n|------|--------------|--------------|--------------|--------------|--------------|--------------|--------------|");
             Console.WriteLine($"\n{"<< [LEFT.ARROW](Prev. Week)",-32}{"[V](View Act.)",-20}{"[D](View Day)",-18}{"[ESC](Cancel)",-18}{"[RIGHT ARROW](Next Week) >>",-25}");
+        }
+
+        private static void ViewWeekDay(int year, int week, ConsoleKeyInfo key)
+        {
+            List<Reservation> dayReservations = Reservation.reservations.Where(w => ISOWeek.GetWeekOfYear(w.date.timeFrom) == week).ToList();
+            DayOfWeek dayOfWeek = DayOfWeek.Monday;
+
+            if (key.Key == ConsoleKey.D1 || key.Key == ConsoleKey.NumPad1) dayOfWeek = DayOfWeek.Monday;
+            if (key.Key == ConsoleKey.D2 || key.Key == ConsoleKey.NumPad2) dayOfWeek = DayOfWeek.Tuesday;
+            if (key.Key == ConsoleKey.D3 || key.Key == ConsoleKey.NumPad3) dayOfWeek = DayOfWeek.Wednesday;
+            if (key.Key == ConsoleKey.D4 || key.Key == ConsoleKey.NumPad4) dayOfWeek = DayOfWeek.Thursday;
+            if (key.Key == ConsoleKey.D5 || key.Key == ConsoleKey.NumPad5) dayOfWeek = DayOfWeek.Friday;
+            if (key.Key == ConsoleKey.D6 || key.Key == ConsoleKey.NumPad6) dayOfWeek = DayOfWeek.Saturday;
+            if (key.Key == ConsoleKey.D7 || key.Key == ConsoleKey.NumPad7) dayOfWeek = DayOfWeek.Sunday;
+
+            DateTime dateTime = ISOWeek.ToDateTime(year, week, dayOfWeek);
+
+            Console.WriteLine($"<< ACTIVITY CALENDAR, WEEK {week} >>");
+            Console.WriteLine($"    << {dayOfWeek} {dateTime.ToShortDateString()} >>");
+            foreach (Reservation r in dayReservations)
+            {
+                if (r.date.timeFrom.DayOfWeek == dayOfWeek)
+                {
+                    Console.WriteLine($"\n-  RESERVATION ID: {r.id}");
+                    Console.WriteLine($"- RESERVATION NAME: {r.name}");
+                    Console.WriteLine($"- RESERVATION DESCRIPTION: {r.description}");
+                    Console.WriteLine($"- RESERVATION DATE: {r.date.timeFrom.TimeOfDay} - {r.date.timeTo.TimeOfDay}");
+                    Console.WriteLine($"- RESERVATION OWNER: {r.owner.name}");
+                }
+            }
         }
     }
 }

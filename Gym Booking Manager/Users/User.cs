@@ -12,9 +12,9 @@ namespace Gym_Booking_Manager.Users
         public string email { get; set; }
         public string loginName { get; set; }
         public string loginPass { get; set; }
-        public DateTime MembershipStartDate { get; set; }
-        public DateTime MembershipEndDate { get; set; }
-        public bool IsActive { get; set; }
+        public DateTime subStart { get; set; }
+        public DateTime subEnd { get; set; }
+        public bool isActive { get; set; }
 
         protected User(int id, string name, int ssn, string phone, string email, string loginName, string loginPass)
         {
@@ -107,7 +107,7 @@ namespace Gym_Booking_Manager.Users
         {
             string[] lines = File.ReadAllLines("Users/Users.txt");
             using (StreamWriter writer = new StreamWriter("Users/Users.txt", true))
-            writer.WriteLine($"Customer;{User.users[User.users.Count()-1].id};{User.users[User.users.Count() - 1].name};{User.users[User.users.Count() - 1].ssn};{User.users[User.users.Count() - 1].phone};{User.users[User.users.Count() - 1].email};{User.users[User.users.Count() - 1].loginName};{User.users[User.users.Count() - 1].loginPass};{DateTime.Now};{User.users[User.users.Count() - 1].MembershipEndDate};True");
+            writer.WriteLine($"Customer;{User.users[User.users.Count()-1].id};{User.users[User.users.Count() - 1].name};{User.users[User.users.Count() - 1].ssn};{User.users[User.users.Count() - 1].phone};{User.users[User.users.Count() - 1].email};{User.users[User.users.Count() - 1].loginName};{User.users[User.users.Count() - 1].loginPass};{DateTime.Now};{User.users[User.users.Count() - 1].subEnd};True");
         }
         public abstract void Menu();
     }

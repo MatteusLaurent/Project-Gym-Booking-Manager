@@ -55,7 +55,7 @@ namespace Gym_Booking_Manager
             Reservation.reservations.Add(resD);
             Reservation.reservations.Add(resE);
 
-            Calendars.Calendar.ViewCalender();
+            Calendars.Calendar.ViewCalendarMenu();
 
             //GBMLogger logger = new GBMLogger("GBMLogger.txt");
             //int activeUser=-1;
