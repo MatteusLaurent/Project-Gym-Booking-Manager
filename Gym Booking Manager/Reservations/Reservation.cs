@@ -1,5 +1,6 @@
 ﻿using Gym_Booking_Manager.Users;
 using Gym_Booking_Manager.Calendars;
+using System.Xml.Linq;
 
 namespace Gym_Booking_Manager.Reservations
 {
@@ -96,7 +97,7 @@ namespace Gym_Booking_Manager.Reservations
                 if (strings[0] == "PTrainer") reservables.Add(new PTrainer(int.Parse(strings[1]), int.Parse(strings[2])));
             }
         }
-        public void Save()
+        public static void Save()
         {
             string[] lines = File.ReadAllLines("Reservations/Reservables.txt");
             using (StreamWriter writer = new StreamWriter("Reservations/Reservables.txt", true))
@@ -104,21 +105,71 @@ namespace Gym_Booking_Manager.Reservations
                 if (Reservable.reservables[Reservable.reservables.Count() - 1] is PTrainer)
                 {
                     PTrainer pTrainer = (PTrainer)Reservable.reservables[Reservable.reservables.Count() - 1];
-                    writer.WriteLine($"{pTrainer.id};{pTrainer.name};{pTrainer.description};{pTrainer.Instructor.id}");
+                    writer.WriteLine($"PTrainer;{pTrainer.id};{pTrainer.name};{pTrainer.description};{pTrainer.Instructor.id}");
                 }
-                if (Reservable.reservables[Reservable.reservables.Count() - 1] is Equipment) writer.WriteLine($"{Reservable.reservables[Reservable.reservables.Count() - 1].id};{Reservable.reservables[Reservable.reservables.Count() - 1].name};{Reservable.reservables[Reservable.reservables.Count() - 1].description}");
+                if (Reservable.reservables[Reservable.reservables.Count() - 1] is Equipment) writer.WriteLine($"Equipment;{Reservable.reservables[Reservable.reservables.Count() - 1].id};{Reservable.reservables[Reservable.reservables.Count() - 1].name};{Reservable.reservables[Reservable.reservables.Count() - 1].description}");
                 if (Reservable.reservables[Reservable.reservables.Count() - 1] is Space)
                 {
                     Space space = (Space)Reservable.reservables[Reservable.reservables.Count() - 1];
-                    writer.WriteLine($"{space.id};{space.name};{space.description};{space.Capacity}");
+                    writer.WriteLine($"Space;{space.id};{space.name};{space.description};{space.Capacity}");
                 }
             }
         }
-        public void NewReservable()
+        public static void NewReservable()
         {
-            // Staff creates new reservables.
+            bool go = true;
+            while (go == true)
+            {
+                Console.WriteLine("Skriv 1 för att registrera utrustning, 2 för att registrera utrymme, 3 för att registrera PT, 4 Avsluta");
+                string input = Console.ReadLine();
+                switch (input)
+                {
+                    case "1":
+                        NewEquipment();
+                        break;
+                    case "2":
+                        NewSpace();
+                        break;
+                    case "3":
+                        NewPT();
+                        break;
+                    case "4":
+                        go = false;
+                        break;
+
+                }
+            }
         }
-        public void UpdateReservable()
+        public static int GetID()
+        {
+            return reservables.Count();
+        }
+        public static void NewEquipment()
+        {
+            string[] input=new string[3];
+            Console.Write("Skriv in utrustningens namn: ");
+            input[0]=Console.ReadLine();
+            Console.Write("Skriv in utrustningens beskrivning: ");
+            input[1] = Console.ReadLine();
+            int ID = GetID();             
+            Console.WriteLine(); 
+            Console.WriteLine("Vill du spara namn:" + input[0]+" "+ input[1]+" skriv ja om du vill det");
+            string spara=Console.ReadLine();
+            if (spara == "ja" || spara == "Ja" || spara == "JA")
+            {
+                reservables.Add(new Equipment(ID, input[0], input[1]));
+                Save();
+            }
+        }
+        public static void NewSpace()
+        {
+
+        }
+        public static void NewPT()
+        {
+
+        }
+        public static void UpdateReservable()
         {
             // Staff updates existing reservables.
         }
