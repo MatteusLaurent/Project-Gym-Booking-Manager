@@ -47,7 +47,6 @@ namespace Gym_Booking_Manager.Reservations
             {
                 if(Reservation.reservations[Reservation.reservations.Count() - 1].reservableList.Count()-1==i) itemsReserved=itemsReserved+ Reservation.reservations[Reservation.reservations.Count() - 1].reservableList[i].id;
                 else itemsReserved = itemsReserved+ Reservation.reservations[Reservation.reservations.Count() - 1].reservableList[i].id + ";";
-
             }
             using (StreamWriter writer = new StreamWriter("Reservations/Reservations.txt", true))            
             writer.WriteLine($"{Reservation.reservations[Reservation.reservations.Count() - 1].name};{Reservation.reservations[Reservation.reservations.Count() - 1].description};{User.users[Reservation.reservations.Count() - 1].id};{Reservation.reservations[Reservation.reservations.Count() - 1].date.timeFrom};{Reservation.reservations[Reservation.reservations.Count() - 1].date.timeTo}+{itemsReserved}");
@@ -136,7 +135,6 @@ namespace Gym_Booking_Manager.Reservations
                     case "4":
                         go = false;
                         break;
-
                 }
             }
         }
@@ -163,11 +161,37 @@ namespace Gym_Booking_Manager.Reservations
         }
         public static void NewSpace()
         {
-
+            string[] input = new string[3];
+            Console.Write("Skriv in lokalens namn: ");
+            input[0] = Console.ReadLine();
+            Console.Write("Skriv in lokalens beskrivning: ");
+            input[1] = Console.ReadLine();
+            Console.Write("Skriv in lokalens kapacitet: ");
+            input[2] = Console.ReadLine();
+            int ID = GetID();
+            Console.WriteLine();
+            Console.WriteLine("Vill du spara namn:" + input[0] + " " + input[1] + " " + input[2] + "? skriv ja om du vill det");
+            string spara = Console.ReadLine();
+            if (spara == "ja" || spara == "Ja" || spara == "JA")
+            {
+                reservables.Add(new Space(ID, input[0], input[1], int.Parse(input[2])));
+                Save();
+            }
         }
+
         public static void NewPT()
         {
-
+            Console.Write("Skriv in ID av PT'ens ID: ");
+            int trainerID = int.Parse(Console.ReadLine());
+            int ID = GetID();
+            Console.WriteLine();
+            Console.WriteLine("Vill du spara en PT session med trainer ID " + trainerID + "? skriv ja om du vill det");
+            string spara = Console.ReadLine();
+            if (spara == "ja" || spara == "Ja" || spara == "JA")
+            {
+                reservables.Add(new PTrainer(ID, trainerID));
+                Save();
+            }
         }
         public static void UpdateReservable()
         {
