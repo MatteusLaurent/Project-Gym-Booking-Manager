@@ -12,8 +12,8 @@ namespace Gym_Booking_Manager.Calendars
 
         public Calendar(DateTime timeFrom, DateTime timeTo)
         {
-            this.timeFrom = start;
-            this.timeTo = end;
+            this.timeFrom = timeFrom;
+            this.timeTo = timeTo;
         }
         public static void ViewCalender()
         {
