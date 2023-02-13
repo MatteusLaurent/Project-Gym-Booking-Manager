@@ -23,9 +23,9 @@ namespace Gym_Booking_Manager
             
             // DAVIDS TEST:
             // TEST USERS:
-            var userA = new Staff(0, "TOM", "145687-4354", "012-5342-543", "tom@something.com", "", "");
-            var userB = new Staff(0, "BEN", "145687-4354", "012-5342-543", "ben@something.com", "", "");
-            var userC = new Staff(0, "LARRY", "145687-4354", "012-5342-543", "larry@something.com", "", "");
+            var userA = new Staff(0, "TOM", 1456874354, "012-5342-543", "tom@something.com", "", "");
+            var userB = new Staff(0, "BEN", 1456874354, "012-5342-543", "ben@something.com", "", "");
+            var userC = new Staff(0, "LARRY", 1456874354, "012-5342-543", "larry@something.com", "", "");
 
             // TEST CALENDER:
             var dateA = new DateTime(2023, 02, 17, 8, 0, 0);
@@ -45,11 +45,11 @@ namespace Gym_Booking_Manager
             var calE = new Calendars.Calendar(dateE, dateEe);
 
             // TEST RESVATIONS:
-            var resA = new Reservation("FIGHT", "", userA, calA);
-            var resB = new Reservation("WORKOUT", "", userB, calB);
-            var resC = new Reservation("JUMP", "", userB, calC);
-            var resD = new Reservation("RUN", "", userC, calD);
-            var resE = new Reservation("DANCE", "", userC, calE);
+            var resA = new Reservation(0, "FIGHT", "", userA, calA, null);
+            var resB = new Reservation(1, "WORKOUT", "", userB, calB, null);
+            var resC = new Reservation(2, "JUMP", "", userB, calC, null);
+            var resD = new Reservation(3, "RUN", "", userC, calD, null);
+            var resE = new Reservation(4, "DANCE", "", userC, calE, null);
             Reservation.reservations.Add(resA);
             Reservation.reservations.Add(resB);
             Reservation.reservations.Add(resC);
