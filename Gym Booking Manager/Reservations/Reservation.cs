@@ -48,7 +48,7 @@ namespace Gym_Booking_Manager.Reservations
                 else itemsReserved = itemsReserved+ Reservation.reservations[Reservation.reservations.Count() - 1].reservableList[i].id + ";";
 
             }
-            using (StreamWriter writer = new StreamWriter("Reservations/Reservations.txt", true))            
+            using (StreamWriter writer = new StreamWriter("Reservations/Reservations.txt", true))        
             writer.WriteLine($"{Reservation.reservations[Reservation.reservations.Count() - 1].name};{Reservation.reservations[Reservation.reservations.Count() - 1].description};{User.users[Reservation.reservations.Count() - 1].id};{Reservation.reservations[Reservation.reservations.Count() - 1].date.timeFrom};{Reservation.reservations[Reservation.reservations.Count() - 1].date.timeTo}+{itemsReserved}");
         }
         public void NewReservation()

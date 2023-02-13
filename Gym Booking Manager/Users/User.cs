@@ -6,7 +6,7 @@ namespace Gym_Booking_Manager.Users
 
         public int id { get; set; }
         public string name { get; set; }
-        public string ssn { get; set; }
+        public int ssn { get; set; }
         public string phone { get; set; }
         public string email { get; set; }
         public string loginName { get; set; }
@@ -15,7 +15,7 @@ namespace Gym_Booking_Manager.Users
         public DateTime MembershipEndDate { get; set; }
         public bool IsActive { get; set; }
 
-        protected User(int id, string name, string ssn, string phone, string email, string loginName, string loginPass)
+        protected User(int id, string name, int ssn, string phone, string email, string loginName, string loginPass)
         {
             this.id = id;
             this.name = name;
@@ -112,7 +112,7 @@ namespace Gym_Booking_Manager.Users
     }
     public class Staff : User
     {
-        public Staff(int id, string name, string ssn, string phone, string email, string loginName, string loginPass)
+        public Staff(int id, string name, int ssn, string phone, string email, string loginName, string loginPass)
             : base(id, name, ssn, phone, email, loginName, loginPass) { }
         public void RegisterUser()
         {
@@ -201,7 +201,7 @@ namespace Gym_Booking_Manager.Users
         public DateTime subStart { get; set; }
         public DateTime subEnd { get; set; }
         public bool isMember { get; set; }
-        public Customer(int id, string name, string ssn, string phone, string email, string loginName, string loginPass,
+        public Customer(int id, string name, int ssn, string phone, string email, string loginName, string loginPass,
                         DateTime subStart, DateTime subEnd, bool isMember)
             : base(id, name, ssn, phone, email, loginName, loginPass)
         {
@@ -264,7 +264,7 @@ namespace Gym_Booking_Manager.Users
     }
     public class Admin : User
     {
-        public Admin(int id, string name, string ssn, string phone, string email, string loginName, string loginPass)
+        public Admin(int id, string name, int ssn, string phone, string email, string loginName, string loginPass)
             : base(id, name, ssn, phone, email, loginName, loginPass) { }
         public void ListLog() { }
         public override void Menu() 
