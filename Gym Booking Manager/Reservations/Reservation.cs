@@ -14,13 +14,13 @@ namespace Gym_Booking_Manager.Reservations
         public List<Reservable> reservableList { get; set; }
         public Calendar date { get; set; }
 
-        public Reservation(string name, string description, User owner, Calendar date, List<Reservable> itemss)
+        public Reservation(string name, string description, User owner, Calendar date)
         {
             id = 0; // IdCounter():
             this.name = name;
             this.description = description;
             this.owner = owner;
-            this.reservableList = reservableList;
+            this.reservableList = new List<Reservable>();
             this.date = date;
         }
         public static void Load()
@@ -34,7 +34,7 @@ namespace Gym_Booking_Manager.Reservations
                 {
                     reservables.Add(Reservable.reservables[int.Parse(strings[i])]);
                 }
-                reservations.Add(new Reservation(strings[0], strings[1], User.users[int.Parse(strings[2])], new Calendar(DateTime.Parse(strings[3]), DateTime.Parse(strings[3])), reservables));
+                //reservations.Add(new Reservation(strings[0], strings[1], User.users[int.Parse(strings[2])], new Calendar(DateTime.Parse(strings[3]), DateTime.Parse(strings[3])), reservables));
             }
         }
         public void NewReservation()
@@ -54,18 +54,10 @@ namespace Gym_Booking_Manager.Reservations
     {
         public static List<Reservable> reservables = new List<Reservable>();
 
-        int id;
-        string name;
-        string description;
         List<Reservation> reservations;
-        public Reservable(string name, string description)
+        public Reservable()
         {
-            id = 0; // IdCounter():
-
-            this.name = name;
-            this.description = description;
             reservations = new List<Reservation>();
-
             reservables.Add(this);
         }
         public void NewReservable()
@@ -83,19 +75,35 @@ namespace Gym_Booking_Manager.Reservations
     }
     public class Equipment : Reservable
     {
-        public Equipment(string name, string description, bool reserved)
-            : base(name, description) { }
+        int id;
+        string name;
+        string description;
+        public Equipment(string name, string description)
+            : base() 
+        {
+            id = 0; // IdCounter!
+            this.name = name;
+            this.description = description;
+        }
     }
     public class Space : Reservable
     {
-        public Space(string name, string description, bool reserved)
-            : base(name, description) { }
+        int id;
+        string name;
+        string description;
+        public Space(string name, string description)
+            : base() 
+        {
+            id = 0; // IdCounter!
+            this.name = name;
+            this.description = description;
+        }
     }
     public class PTrainer : Reservable
     {
         private Staff instructor;
-        public PTrainer(string name, string description, bool reserved, Staff instructor)
-            : base(name, description)
+        public PTrainer(Staff instructor)
+            : base()
         {
             this.instructor = instructor;
         }
