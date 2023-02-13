@@ -101,13 +101,14 @@ namespace Gym_Booking_Manager.Calendars
             Console.WriteLine($"|{"TIME",-5}|{"MONDAY",-10}|{"TUESDAY",-10}|{"WEDNESDAY",-10}|{"THURSDAY",-10}|{"FRIDAY",-10}|{"SATURDAY",-10}|{"SUNDAY",-10}|");
             Console.WriteLine($"|-----|----------|----------|----------|----------|----------|----------|----------|");
 
-            // Loops through days of the week (Monday = 1, Tuesday = 2,... Sunday = 0).
+            
+            // Loops through the time slots of the day (08:00 ... 19:00).
             for (int t = 8; t < 20; t++)
             {
                 Console.Write($"|{t.ToString("00")}-{(t + 1).ToString("00")}|");
                 (posX, posY) = Console.GetCursorPosition();
 
-                // Loops through the time slots of the day (08:00 ... 19:00).
+                // Loops through days of the week (Monday = 1, Tuesday = 2,... Sunday = 0).
                 for (int d = 0; d < 7; d++)
                 {
                     int day = d + 1;
