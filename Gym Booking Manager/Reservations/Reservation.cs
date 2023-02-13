@@ -37,7 +37,7 @@ namespace Gym_Booking_Manager.Reservations
                 reservations.Add(new Reservation(strings[0], strings[1], User.users[int.Parse(strings[2])], new Calendar(DateTime.Parse(strings[3]), DateTime.Parse(strings[3])), reservables));
             }
         }
-        public void SaveReservation()
+        public void Save()
         {
 
             string[] lines = File.ReadAllLines("Reservations/Reservations.txt");
@@ -92,8 +92,26 @@ namespace Gym_Booking_Manager.Reservations
             {
                 string[] strings = line.Split(";");
                 if (strings[0]=="Equipment")reservables.Add(new Equipment(int.Parse(strings[1]), strings[2], strings[3]));
-                if (strings[0] == "Space") reservables.Add(new Space(int.Parse(strings[1]), strings[2], strings[3]), int.Parse(strings[4]));
+                if (strings[0] == "Space") reservables.Add(new Space(int.Parse(strings[1]), strings[2], strings[3], int.Parse(strings[4])));
                 if (strings[0] == "PTrainer") reservables.Add(new PTrainer(int.Parse(strings[1]), int.Parse(strings[2])));
+            }
+        }
+        public void Save()
+        {
+            string[] lines = File.ReadAllLines("Reservations/Reservables.txt");
+            using (StreamWriter writer = new StreamWriter("Reservations/Reservables.txt", true))
+            {
+                if (Reservable.reservables[Reservable.reservables.Count() - 1] is PTrainer)
+                {
+                    PTrainer pTrainer = (PTrainer)Reservable.reservables[Reservable.reservables.Count() - 1];
+                    writer.WriteLine($"{pTrainer.id};{pTrainer.name};{pTrainer.description};{pTrainer.Instructor.id}");
+                }
+                if (Reservable.reservables[Reservable.reservables.Count() - 1] is Equipment) writer.WriteLine($"{Reservable.reservables[Reservable.reservables.Count() - 1].id};{Reservable.reservables[Reservable.reservables.Count() - 1].name};{Reservable.reservables[Reservable.reservables.Count() - 1].description}");
+                if (Reservable.reservables[Reservable.reservables.Count() - 1] is Space)
+                {
+                    Space space = (Space)Reservable.reservables[Reservable.reservables.Count() - 1];
+                    writer.WriteLine($"{space.id};{space.name};{space.description};{space.Capacity}");
+                }
             }
         }
         public void NewReservable()
@@ -117,12 +135,14 @@ namespace Gym_Booking_Manager.Reservations
     public class Space : Reservable
     {
         int capacity { get; set; }
+        public int Capacity { get { return capacity; } }
         public Space(int id,string name, string description, int capacity)
             : base(id, name, description) { this.capacity = capacity; }
     }
     public class PTrainer : Reservable
     {
         private User instructor;
+        public User Instructor { get { return instructor; } }
         public PTrainer(int id, int who)
             : base(id)
         {
