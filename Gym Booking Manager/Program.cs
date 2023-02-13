@@ -20,8 +20,6 @@ namespace Gym_Booking_Manager
             //User.users[activeUser].Menu();
             // Calendar.ViewCalender();
 
-
-            
             // DAVIDS TEST:
             // TEST USERS:
             var userA = new Staff(0, "TOM", 1456874354, "012-5342-543", "tom@something.com", "", "");
@@ -59,13 +57,6 @@ namespace Gym_Booking_Manager
 
             Calendars.Calendar.ViewCalender();
 
-            //Calendars.Calendar.SortReservationWeek(7);
-
-            //Console.WriteLine($"{resA.date.timeFrom.DayOfWeek} Week: {ISOWeek.GetWeekOfYear(resA.date.timeFrom)}");
-            //Console.WriteLine($"{resB.date.timeFrom.DayOfWeek} Week: {ISOWeek.GetWeekOfYear(resB.date.timeFrom)}");
-            //Console.WriteLine($"{resC.date.timeFrom.DayOfWeek} Week: {ISOWeek.GetWeekOfYear(resC.date.timeFrom)}");
-            //Console.WriteLine($"{resD.date.timeFrom.DayOfWeek} Week: {ISOWeek.GetWeekOfYear(resD.date.timeFrom)}");
-            //Console.WriteLine($"{resE.date.timeFrom.DayOfWeek} Week: {ISOWeek.GetWeekOfYear(resE.date.timeFrom)}");
             GBMLogger logger = new GBMLogger("GBMLogger.txt");
             int activeUser=-1;
             User.Load();

@@ -54,12 +54,10 @@ namespace Gym_Booking_Manager.Calendars
                 switch (keyPressed.Key)
                 {
                     case ConsoleKey.LeftArrow:
-                        Console.SetCursorPosition(posX, posY);
                         currentWeek -= 1;
                         ViewCalendarWeek(currentWeek);
                         break;
                     case ConsoleKey.RightArrow:
-                        Console.SetCursorPosition(posX, posY);
                         currentWeek += 1;
                         ViewCalendarWeek(currentWeek);
                         break;
@@ -96,43 +94,59 @@ namespace Gym_Booking_Manager.Calendars
             DateTime saturday = ISOWeek.ToDateTime(currentYear, weekNumber, DayOfWeek.Saturday);
             DateTime sunday = ISOWeek.ToDateTime(currentYear, weekNumber, DayOfWeek.Sunday);
 
-            Console.WriteLine($"\n<< ACTIVITY WEEK {weekNumber} CALENDAR >>\n");
-            Console.WriteLine($"|{"",-5}|{monday.ToShortDateString(),-10}|{tuesday.ToShortDateString(),-10}|{wednesday.ToShortDateString(),-10}|{thursday.ToShortDateString(),-10}|{friday.ToShortDateString(),-10}|{saturday.ToShortDateString(),-10}|{sunday.ToShortDateString(),-10}|");
-            Console.WriteLine($"|{"TIME",-5}|{"MONDAY",-10}|{"TUESDAY",-10}|{"WEDNESDAY",-10}|{"THURSDAY",-10}|{"FRIDAY",-10}|{"SATURDAY",-10}|{"SUNDAY",-10}|");
-            Console.WriteLine($"|-----|----------|----------|----------|----------|----------|----------|----------|");
+            Console.Clear();
+            Console.WriteLine($"<< ACTIVITY WEEK {weekNumber} CALENDAR >>\n");
+            Console.WriteLine($"|{"",-6}|{monday.ToShortDateString(),-14}|{tuesday.ToShortDateString(),-14}|{wednesday.ToShortDateString(),-14}|{thursday.ToShortDateString(),-14}|{friday.ToShortDateString(),-14}|{saturday.ToShortDateString(),-14}|{sunday.ToShortDateString(),-14}|");
+            Console.WriteLine($"|{"TIME",-6}|{"MONDAY",-14}|{"TUESDAY",-14}|{"WEDNESDAY",-14}|{"THURSDAY",-14}|{"FRIDAY",-14}|{"SATURDAY",-14}|{"SUNDAY",-14}|");
+            Console.WriteLine($"|------|--------------|--------------|--------------|--------------|--------------|--------------|--------------|");
+            (posX, posY) = Console.GetCursorPosition();
 
-            
-            // Loops through the time slots of the day (08:00 ... 19:00).
+            for (int i = 0; i < 12; i++)
+            {
+                Console.WriteLine($"|{"",-6}|{"",-14}|{"",-14}|{"",-14}|{"",-14}|{"",-14}|{"",-14}|{"",-14}|");
+            }
+
+            // Loops through the timeslots of the day (08:00, 09.00,... 19:00).
+            int addRows = 0;
+            bool slotContent = false;
             for (int t = 8; t < 20; t++)
             {
-                Console.Write($"|{t.ToString("00")}-{(t + 1).ToString("00")}|");
-                (posX, posY) = Console.GetCursorPosition();
+                Console.SetCursorPosition(posX, posY + addRows);
+                Console.Write($"|{t.ToString("00")}-{(t + 1).ToString("00")} |");
 
-                // Loops through days of the week (Monday = 1, Tuesday = 2,... Sunday = 0).
+                // Loops through dayslots of the week (Monday = 1, Tuesday = 2,... Sunday = 0).
                 for (int d = 0; d < 7; d++)
                 {
                     int day = d + 1;
                     if (day == 7) day = 0;
 
-                    int amount = 0;
+                    slotContent = false;
                     foreach (Reservation r in weekReservations)
                     {
+
                         if ((int)r.date.timeFrom.DayOfWeek == day && r.date.timeFrom.Hour == t)
                         {
-                            Console.SetCursorPosition(posX + (11 * d), posY);
-                            Console.Write($"{$"{r.id}. {r.name}", -10}|");
-                            amount++;
+                            if (slotContent) addRows++;
+                            string slotInfo = $"{r.id}. {r.name}";
+
+                            if (slotInfo.Length > 14) slotInfo = slotInfo.Substring(0, 11) + "...";
+
+                            Console.SetCursorPosition(posX + 8 + (15 * d), posY + addRows);
+                            Console.Write($"{slotInfo,-14}|");
+
+                            slotContent = true;
                         }
                     }
-
-                    if (amount == 0)
+                    if (!slotContent)
                     {
-                        Console.Write($"{"",-10}|");
+                        Console.SetCursorPosition(posX + 8 + (15 * d), posY + addRows);
+                        Console.Write($"{"",-14}|");
                     }
                 }
-                Console.WriteLine();
+                addRows++;
             }
-            Console.WriteLine($"\n{"<< [LEFT.ARROW](Prev. Week)",-29}{"[ESC](Cancel)",-15}{"[V](View Act.)",-16}{"[RIGHT ARROW](Next Week) >>",-25}");
+            Console.WriteLine($"\n|------|--------------|--------------|--------------|--------------|--------------|--------------|--------------|");
+            Console.WriteLine($"\n{"<< [LEFT.ARROW](Prev. Week)",-32}{"[V](View Act.)",-20}{"[D](View Day)",-18}{"[ESC](Cancel)",-18}{"[RIGHT ARROW](Next Week) >>",-25}");
         }
     }
 }
