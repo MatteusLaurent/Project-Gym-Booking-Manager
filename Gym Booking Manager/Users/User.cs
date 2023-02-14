@@ -52,7 +52,7 @@ namespace Gym_Booking_Manager.Users
             }
             return maxID + 1;
         }
-        public static int LogIn()
+        public static int LogIn() // NYI: ESCAPE PATH!
         {
             int id = -1;
             int tries = 5;
@@ -326,29 +326,42 @@ namespace Gym_Booking_Manager.Users
         }
         public override void Menu()
         {
-            bool go = true;
-            while (go == true)
+            bool cancel = false;
+
+            Console.Clear();
+            Console.WriteLine("<< CUSTOMER MENU >>\n");
+            Console.WriteLine($">> LOGGED IN: {this.name}");
+            while (!cancel)
             {
-                Console.WriteLine("Skriv 1 för att boka aktivitet, 2 för att lista bokade aktiviteter, 3 för att avboka aktiviteter, 4 Avsluta");
-                string input = Console.ReadLine();
-                switch (input)
+                Console.WriteLine("\n>> Select an option!");
+                Console.WriteLine($"{"- [1]",-8}List available activities.\n{"- [2]",-8}Register for an activity.\n{"- [3]",-8}Deregister for an activity.\n{"- [4]",-8}View your registered activities.\n{"- [ESC]",-8}Log out.");
+                ConsoleKeyInfo keyInfo = Console.ReadKey(true);
+
+                if (keyInfo.Key == ConsoleKey.D1 || keyInfo.Key == ConsoleKey.NumPad1)
                 {
-                    case "1":
-                        BookActivity();
-                        break;
-                    case "2":
-                        ListActivity();
-                        break;
-                    case "3":
-                        CancelActivity();
-                        break;
-                    case "4":
-                        Console.WriteLine("Hej då!");
-                        go = false;
-                        break;
-                    default:
-                        Console.WriteLine("Felaktigt val!");
-                        break;
+                    Calendars.Calendar.ViewCalendarMenu();
+                }
+                else if (keyInfo.Key == ConsoleKey.D2 || keyInfo.Key == ConsoleKey.NumPad2)
+                {
+                    BookActivity();
+                }
+                else if (keyInfo.Key == ConsoleKey.D3 || keyInfo.Key == ConsoleKey.NumPad3)
+                {
+                    CancelActivity();
+                }
+                else if (keyInfo.Key == ConsoleKey.D4 || keyInfo.Key == ConsoleKey.NumPad4)
+                {
+                    ListActivity();
+                }
+                else if (keyInfo.Key == ConsoleKey.Escape)
+                {
+                    Console.WriteLine($"\n>> LOGGED OUT: {this.name}");
+                    Task.Delay(1000).Wait();
+                    cancel = true;
+                }
+                else
+                {
+                    Console.WriteLine($">> Invalid key option (KEY.{keyInfo.Key})");
                 }
             }
         }
@@ -375,22 +388,22 @@ namespace Gym_Booking_Manager.Users
             while (!cancel)
             {
                 Console.WriteLine("\n>> Select an option!");
-                Console.WriteLine($"{"- [1]",-8}Add new staff account.\n{"- [2]",-8}Remove existing staff account.\n{"- [3]",-8}View log activities.\n{"- [ESC]",-8}Log Out.");
-                ConsoleKeyInfo keyPressed = Console.ReadKey(true);
+                Console.WriteLine($"{"- [1]",-8}Add new staff account.\n{"- [2]",-8}Remove existing staff account.\n{"- [3]",-8}View log activities.\n{"- [ESC]",-8}Log out.");
+                ConsoleKeyInfo keyInfo = Console.ReadKey(true);
 
-                if (keyPressed.Key == ConsoleKey.D1 || keyPressed.Key == ConsoleKey.NumPad1)
+                if (keyInfo.Key == ConsoleKey.D1 || keyInfo.Key == ConsoleKey.NumPad1)
                 {
                     // ADD STAFF METHOD HERE.
                 }
-                else if (keyPressed.Key == ConsoleKey.D2 || keyPressed.Key == ConsoleKey.NumPad2)
+                else if (keyInfo.Key == ConsoleKey.D2 || keyInfo.Key == ConsoleKey.NumPad2)
                 {
                     // DELETE STAFF METHOD HERE.
                 }
-                else if (keyPressed.Key == ConsoleKey.D3 || keyPressed.Key == ConsoleKey.NumPad3)
+                else if (keyInfo.Key == ConsoleKey.D3 || keyInfo.Key == ConsoleKey.NumPad3)
                 {
                     ListLog();
                 }
-                else if (keyPressed.Key == ConsoleKey.Escape)
+                else if (keyInfo.Key == ConsoleKey.Escape)
                 {
                     Console.WriteLine($"\n>> LOGGED OUT: {this.name}");
                     Task.Delay(1000).Wait();
@@ -398,7 +411,7 @@ namespace Gym_Booking_Manager.Users
                 }
                 else
                 {
-                    Console.WriteLine($">> Invalid key option (KEY.{keyPressed.Key})");
+                    Console.WriteLine($">> Invalid key option (KEY.{keyInfo.Key})");
                 }
             } 
         }

@@ -24,7 +24,7 @@ namespace Gym_Booking_Manager.Reservations
             this.reservableList = new List<Reservable>();
             this.date = date;
         }
-        public static void Load()
+        public static void LoadReservations()
         {
             string[] lines = File.ReadAllLines("Reservations/Reservations.txt");
             foreach (string line in lines)
@@ -38,7 +38,7 @@ namespace Gym_Booking_Manager.Reservations
                 reservations.Add(new Reservation(int.Parse(strings[0]),strings[1], strings[2], User.users[int.Parse(strings[3])], new Calendar(DateTime.Parse(strings[4]), DateTime.Parse(strings[5])), reservables));
             }
         }
-        public void Save()
+        public void SaveReservations()
         {
 
             string[] lines = File.ReadAllLines("Reservations/Reservations.txt");
@@ -85,7 +85,7 @@ namespace Gym_Booking_Manager.Reservations
             this.name = "";
             this.description = "";
         }
-        public static void Load()
+        public static void LoadReservables()
         {
             string[] lines = File.ReadAllLines("Reservations/Reservables.txt");
             foreach (string line in lines)
@@ -96,7 +96,7 @@ namespace Gym_Booking_Manager.Reservations
                 if (strings[0] == "PTrainer") reservables.Add(new PTrainer(int.Parse(strings[1]), int.Parse(strings[2])));
             }
         }
-        public static void Save()
+        public static void SaveReservables()
         {
             string[] lines = File.ReadAllLines("Reservations/Reservables.txt");
             using (StreamWriter writer = new StreamWriter("Reservations/Reservables.txt", true))
@@ -156,7 +156,7 @@ namespace Gym_Booking_Manager.Reservations
             if (spara == "ja" || spara == "Ja" || spara == "JA")
             {
                 reservables.Add(new Equipment(ID, input[0], input[1]));
-                Save();
+                SaveReservables();
             }
         }
         public static void NewSpace()
@@ -175,7 +175,7 @@ namespace Gym_Booking_Manager.Reservations
             if (spara == "ja" || spara == "Ja" || spara == "JA")
             {
                 reservables.Add(new Space(ID, input[0], input[1], int.Parse(input[2])));
-                Save();
+                SaveReservables();
             }
         }
 
@@ -190,7 +190,7 @@ namespace Gym_Booking_Manager.Reservations
             if (spara == "ja" || spara == "Ja" || spara == "JA")
             {
                 reservables.Add(new PTrainer(ID, trainerID));
-                Save();
+                SaveReservables();
             }
         }
         public static void UpdateReservable()
