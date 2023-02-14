@@ -7,6 +7,7 @@ namespace Gym_Booking_Manager
     
     internal class Program
     {
+        public static int activeUser = -1;
         static void Main(string[] args)
         {
             // LOAD DATA METHODS RUNS BELOW:
