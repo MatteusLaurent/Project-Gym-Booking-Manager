@@ -1,4 +1,5 @@
-﻿using Gym_Booking_Manager.Reservations;
+﻿using Gym_Booking_Manager.Activities;
+using Gym_Booking_Manager.Reservations;
 using Gym_Booking_Manager.Users;
 using System.Collections.Generic;
 using System.Globalization;
@@ -20,6 +21,7 @@ namespace Gym_Booking_Manager.Calendars
         {
             ConsoleKeyInfo keyPressed;
 
+            Console.Clear();
             Console.WriteLine($"<< ACTIVITY CALENDAR >>\n\n>> Select an option!\n{"- [1]",-8}View weekly calendar.\n{"- [2]",-8}View monthly calendar.\n{"- [ESC]",-8}Cancel.");
 
 
@@ -116,10 +118,10 @@ namespace Gym_Booking_Manager.Calendars
         private static void ViewCalendarWeek(int year, int week)
         {
             // Filtering Reservation.reservations list based on weekNr of date.timeFrom
-            List<Reservation> weekReservations = Reservation.reservations.Where(w => ISOWeek.GetWeekOfYear(w.date.timeFrom) == week).ToList();
+            List<Activity> weekActivities = Activity.activities.Where(a => ISOWeek.GetWeekOfYear(a.date.timeFrom) == week).ToList();
 
             // Sorting Reservation.reservations list based on date.timeFrom.
-            weekReservations.Sort((x, y) => x.date.timeFrom.CompareTo(y.date.timeFrom));
+            weekActivities.Sort((x, y) => x.date.timeFrom.CompareTo(y.date.timeFrom));
 
             DateTime monday = ISOWeek.ToDateTime(year, week, DayOfWeek.Monday);
             DateTime tuesday = ISOWeek.ToDateTime(year, week, DayOfWeek.Tuesday);
@@ -158,13 +160,13 @@ namespace Gym_Booking_Manager.Calendars
                     if (day == 7) day = 0;
 
                     slotContent = false;
-                    foreach (Reservation r in weekReservations)
+                    foreach (Activity activity in weekActivities)
                     {
 
-                        if ((int)r.date.timeFrom.DayOfWeek == day && r.date.timeFrom.Hour == t)
+                        if ((int)activity.date.timeFrom.DayOfWeek == day && activity.date.timeFrom.Hour == t)
                         {
                             if (slotContent) addRows++;
-                            string slotInfo = $"{r.id}. {r.name}";
+                            string slotInfo = $"{activity.id}. {activity.name}";
 
                             if (slotInfo.Length > 14) slotInfo = slotInfo.Substring(0, 11) + "...";
 
@@ -188,7 +190,7 @@ namespace Gym_Booking_Manager.Calendars
 
         private static void ViewWeekDay(int year, int week, ConsoleKeyInfo key)
         {
-            List<Reservation> dayReservations = Reservation.reservations.Where(w => ISOWeek.GetWeekOfYear(w.date.timeFrom) == week).ToList();
+            List<Activity> dayReservations = Activity.activities.Where(activity => ISOWeek.GetWeekOfYear(activity.date.timeFrom) == week).ToList();
             DayOfWeek dayOfWeek = DayOfWeek.Monday;
 
             if (key.Key == ConsoleKey.D1 || key.Key == ConsoleKey.NumPad1) dayOfWeek = DayOfWeek.Monday;
@@ -203,15 +205,14 @@ namespace Gym_Booking_Manager.Calendars
 
             Console.WriteLine($"<< ACTIVITY CALENDAR, WEEK {week} >>");
             Console.WriteLine($"    << {dayOfWeek} {dateTime.ToShortDateString()} >>");
-            foreach (Reservation r in dayReservations)
+            foreach (Activity activity in dayReservations)
             {
-                if (r.date.timeFrom.DayOfWeek == dayOfWeek)
+                if (activity.date.timeFrom.DayOfWeek == dayOfWeek)
                 {
-                    Console.WriteLine($"\n-  RESERVATION ID: {r.id}");
-                    Console.WriteLine($"- RESERVATION NAME: {r.name}");
-                    Console.WriteLine($"- RESERVATION DESCRIPTION: {r.description}");
-                    Console.WriteLine($"- RESERVATION DATE: {r.date.timeFrom.TimeOfDay} - {r.date.timeTo.TimeOfDay}");
-                    Console.WriteLine($"- RESERVATION OWNER: {r.owner.name}");
+                    Console.WriteLine($"\n-  ACTIVITY ID: {activity.id}");
+                    Console.WriteLine($"- ACTIVITY NAME: {activity.name}");
+                    Console.WriteLine($"- ACTIVITY DESCRIPTION: {activity.description}");
+                    // ADD MORE!!
                 }
             }
         }

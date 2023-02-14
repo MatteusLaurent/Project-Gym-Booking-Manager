@@ -1,3 +1,13 @@
-﻿Equipment;0;Hantel;50 kg
-Space;1;Grupprum;max 30 pers;30
-PTrainer;2;1
+﻿12
+Equipment;0;Sports Equipment;Equipment for floorball.
+Equipment;1;Sports Equipment;Equipment for swimming
+Equipment;2;Sports Equipment;Equipment for badminton
+Equipment;3;Treadmill;Specialized treadmill.
+Equipment;4;Trampoline;Big trampoline.
+Space;5;Hall;Hall for group activities.;20
+Space;6;Hall;Hall for group activities.;30
+Space;7;Studio;Space for sport activities.;20
+Space;8;Lane;Lane for bowling.;10
+Space;9;Lane;Lane for running.;15
+PTrainer;10;1
+PTrainer;11;2

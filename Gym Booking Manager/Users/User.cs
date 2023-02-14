@@ -224,35 +224,42 @@ namespace Gym_Booking_Manager.Users
         }
         public override void Menu()
         {
-            bool go = true;
-            while (go == true)
+            bool cancel = false;
+
+            Console.Clear();
+            Console.WriteLine("<< CUSTOMER MENU >>\n");
+            Console.WriteLine($">> LOGGED IN: {this.name}");
+            while (!cancel)
             {
-                Console.WriteLine("Skriv 1 för Registrera användare, 2 för Avregisterera användare, 3 för Kontohantering, 4 för Avboka aktiviteter, 5 Registerara artiklar, 6 Avsluta");
-                string input = Console.ReadLine();
-                switch (input)
+                Console.WriteLine("\n>> Select an option!");
+                Console.WriteLine($"{"- [1]",-8}(THINGS TO DO)\n{"- [2]",-8}(THINGS TO DO)\n{"- [3]",-8}(THINGS TO DO)\n{"- [4]",-8}(THINGS TO DO)\n{"- [ESC]",-8}Log out.");
+                ConsoleKeyInfo keyInfo = Console.ReadKey(true);
+
+                if (keyInfo.Key == ConsoleKey.D1 || keyInfo.Key == ConsoleKey.NumPad1)
                 {
-                    case "1":
-                        RegisterUser();
-                        break;
-                    case "2":
-                        UnregisterUser();
-                        break;
-                    case "3":
-                        ManageAccounts();
-                        break;
-                    case "4":
-                        CancelActivity();
-                        break;
-                    case "5":
-                        Reservable.NewReservable();
-                        break;
-                    case "6":
-                        Console.WriteLine("Hej då!");
-                        go = false;
-                        break;
-                    default:
-                        Console.WriteLine("Felaktigt val!");
-                        break;
+                    
+                }
+                else if (keyInfo.Key == ConsoleKey.D2 || keyInfo.Key == ConsoleKey.NumPad2)
+                {
+                    
+                }
+                else if (keyInfo.Key == ConsoleKey.D3 || keyInfo.Key == ConsoleKey.NumPad3)
+                {
+                    
+                }
+                else if (keyInfo.Key == ConsoleKey.D4 || keyInfo.Key == ConsoleKey.NumPad4)
+                {
+                    
+                }
+                else if (keyInfo.Key == ConsoleKey.Escape)
+                {
+                    Console.WriteLine($"\n>> LOGGED OUT: {this.name}");
+                    Task.Delay(1000).Wait();
+                    cancel = true;
+                }
+                else
+                {
+                    Console.WriteLine($">> Invalid key option (KEY.{keyInfo.Key})");
                 }
             }
         }
