@@ -98,9 +98,9 @@ namespace Gym_Booking_Manager.Users
             foreach (string line in lines)
             {
                 string[] strings = line.Split(";");
-                //if (strings[0] == "Staff") users.Add(new Staff(int.Parse(strings[1]), strings[2], int.Parse(strings[3]), strings[4], strings[5], strings[6], strings[7]));
-                //if (strings[0] == "Admin") users.Add(new Admin(int.Parse(strings[1]), strings[2], int.Parse(strings[3]), strings[4], strings[5], strings[6], strings[7]));
-                //if (strings[0] == "Customer") users.Add(new Customer(int.Parse(strings[1]), strings[2], int.Parse(strings[3]), strings[4], strings[5], strings[6], strings[7], DateTime.Parse(strings[8]), DateTime.Parse(strings[9]), bool.Parse(strings[10])));
+                if (strings[0] == "Staff") users.Add(new Staff(int.Parse(strings[1]), strings[2], int.Parse(strings[3]), strings[4], strings[5], strings[6], strings[7]));
+                if (strings[0] == "Admin") users.Add(new Admin(int.Parse(strings[1]), strings[2], int.Parse(strings[3]), strings[4], strings[5], strings[6], strings[7]));
+                if (strings[0] == "Customer") users.Add(new Customer(int.Parse(strings[1]), strings[2], int.Parse(strings[3]), strings[4], strings[5], strings[6], strings[7], DateTime.Parse(strings[8]), DateTime.Parse(strings[9]), bool.Parse(strings[10])));
             }
         }
         public void SaveUsers()
@@ -165,7 +165,7 @@ namespace Gym_Booking_Manager.Users
             bool go = true;
             while (go == true)
             {
-                Console.WriteLine("Skriv 1 för Registrera användare, 2 för Avregisterera användare, 3 för Kontohantering, 4 för Avboka aktiviteter, 5 Registerara artiklar, 6 Avsluta");
+                Console.WriteLine("Skriv 1 för Registrera användare, 2 för Avregisterera användare, 3 för Kontohantering, 4 för Avboka aktiviteter, 5 Registerara artiklar, 6 Ny reservation utrustning, 7 Avsluta");
                 string input = Console.ReadLine();
                 switch (input)
                 {
@@ -185,6 +185,9 @@ namespace Gym_Booking_Manager.Users
                         Reservable.NewReservable();
                         break;
                     case "6":
+                        Reservation.NewReservationStaff(this.id);
+                        break;
+                    case "7":
                         Console.WriteLine("Hej då!");
                         go = false;
                         break;

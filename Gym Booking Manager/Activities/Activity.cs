@@ -31,11 +31,11 @@ namespace Gym_Booking_Manager.Activities
         public static void Load() // TODO: Add Calender arg to constructor!
         {
             string[] lines = File.ReadAllLines("Activities/Activities.txt");
-             foreach (string line in lines)
-             {
+            foreach (string line in lines)
+            {
                 string[] strings = line.Split(";");
                 activities.Add(new Activity(strings[0], strings[1], bool.Parse(strings[2]), User.users[int.Parse(strings[3])], int.Parse(strings[4]), Reservation.reservations[int.Parse(strings[5])]));
-             }
+            }
         }
 
         public void NewActivity()

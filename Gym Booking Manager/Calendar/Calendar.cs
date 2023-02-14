@@ -120,7 +120,7 @@ namespace Gym_Booking_Manager.Calendars
                         if ((int)r.date.timeFrom.DayOfWeek == day && r.date.timeFrom.Hour == t)
                         {
                             Console.SetCursorPosition(posX + (11 * d), posY);
-                            Console.Write($"{$"{r.id}. {r.name}", -10}|");
+                            Console.Write($"{$"{r.id}.", -10}|");
                             amount++;
                         }
                     }
