@@ -22,9 +22,9 @@ namespace Gym_Booking_Manager
 
             // DAVIDS TEST:
             // TEST USERS:
-            var userA = new Staff(0, "TOM", 1456874354, "012-5342-543", "tom@something.com", "", "");
-            var userB = new Staff(0, "BEN", 1456874354, "012-5342-543", "ben@something.com", "", "");
-            var userC = new Staff(0, "LARRY", 1456874354, "012-5342-543", "larry@something.com", "", "");
+            var userA = new Staff(0, "TOM", "1456874354", "012-5342-543", "tom@something.com", "", "");
+            var userB = new Staff(0, "BEN", "1456874354", "012 -5342-543", "ben@something.com", "", "");
+            var userC = new Staff(0, "LARRY", "1456874354", "012 -5342-543", "larry@something.com", "", "");
 
             // TEST CALENDER:
             var dateA = new DateTime(2023, 02, 17, 8, 0, 0);
@@ -55,7 +55,21 @@ namespace Gym_Booking_Manager
             Reservation.reservations.Add(resD);
             Reservation.reservations.Add(resE);
 
-            Calendars.Calendar.ViewCalendarMenu();
+            User.LoadUsers();
+            //User user = User.users.FirstOrDefault();
+            //user.Menu();
+            //User.LogIn();
+            //foreach (User users in User.users)
+            //{
+            //    Console.WriteLine($"ID: {users.id}");
+            //    Console.WriteLine($"NAME: {users.name}");
+            //    Console.WriteLine($"SSN: {users.ssn}");
+            //    Console.WriteLine($"PHONE: {users.phone}");
+            //    Console.WriteLine($"EMAIL: {users.email}");
+            //    Console.WriteLine($"USERNAME: {users.loginName}");
+            //}
+            Staff.RegisterUser();
+            //Calendars.Calendar.ViewCalendarMenu();
 
             //GBMLogger logger = new GBMLogger("GBMLogger.txt");
             //int activeUser=-1;
