@@ -1,3 +1,4 @@
+using Gym_Booking_Manager.Activities;
 using Gym_Booking_Manager.Reservations;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -31,7 +32,6 @@ namespace Gym_Booking_Manager.Users
             this.email = email;
             this.loginName = loginName;
             this.loginPass = loginPass;
-
         }
         public User() { }
         public void UpdateInfo()
@@ -445,7 +445,6 @@ namespace Gym_Booking_Manager.Users
                 List<User> allUsers = new();
                 allUsers.AddRange(staffUsers);
                 allUsers.AddRange(customerUsers);
-
                 foreach (User u in allUsers)
                 {
                     if (typeUser != u.GetType().Name || x >= 120)
@@ -585,7 +584,7 @@ namespace Gym_Booking_Manager.Users
                 Console.WriteLine("<< STAFF MENU >>\n");
                 Console.WriteLine($">> LOGGED IN: {this.firstName} {this.lastName}");
                 Console.WriteLine("\n>> Select an option!");
-                Console.WriteLine($"{"- [1]",-8}Register a new customer.\n{"- [2]",-8}Deregister a current customer.\n{"- [3]",-8}List all customers.\n{"- [4]",-8}(NOT YET IMPLEMENTED)\n{"- [ESC]",-8}Log out.");
+                Console.WriteLine($"{"- [1]",-8}Register a new customer.\n{"- [2]",-8}Deregister a current customer.\n{"- [3]",-8}List all customers.\n{"- [4]",-8}Reserve equipment or PT\n{"- [5]",-8}Create activity.\n{"- [ESC]",-8}Log out.");
                 ConsoleKeyInfo keyInfo = Console.ReadKey(true);
 
                 if (keyInfo.Key == ConsoleKey.D1 || keyInfo.Key == ConsoleKey.NumPad1)
@@ -602,7 +601,11 @@ namespace Gym_Booking_Manager.Users
                 }
                 else if (keyInfo.Key == ConsoleKey.D4 || keyInfo.Key == ConsoleKey.NumPad4)
                 {
-
+                    Reservation.NewReservationStaff(this.id);
+                }
+                else if (keyInfo.Key == ConsoleKey.D5 || keyInfo.Key == ConsoleKey.NumPad5)
+                {
+                    Activity.NewActivity(this.id);
                 }
                 else if (keyInfo.Key == ConsoleKey.Escape)
                 {
@@ -687,7 +690,7 @@ namespace Gym_Booking_Manager.Users
             while (!cancel)
             {
                 Console.WriteLine("\n>> Select an option!");
-                Console.WriteLine($"{"- [1]",-8}List available activities.\n{"- [2]",-8}Register for an activity.\n{"- [3]",-8}Deregister for an activity.\n{"- [4]",-8}View your registered activities.\n{"- [ESC]",-8}Log out.");
+                Console.WriteLine($"{"- [1]",-8}List available activities.\n{"- [2]",-8}Register for an activity.\n{"- [3]",-8}Deregister for an activity.\n{"- [4]",-8}View your registered activities.\n{"- [5]",-8}Book equipment or PT.\n{"- [6]",-8}{"- [ESC]",-8}Log out.");
                 ConsoleKeyInfo keyInfo = Console.ReadKey(true);
 
                 if (keyInfo.Key == ConsoleKey.D1 || keyInfo.Key == ConsoleKey.NumPad1)
@@ -706,6 +709,11 @@ namespace Gym_Booking_Manager.Users
                 {
                     ListActivity();
                 }
+                else if (keyInfo.Key == ConsoleKey.D5 || keyInfo.Key == ConsoleKey.NumPad5)
+                {
+                    if (this.isMember == true) Reservation.NewReservationUserMember(this.id);
+                    else Reservation.NewReservationUserNonMember(this.id);
+                }                
                 else if (keyInfo.Key == ConsoleKey.Escape)
                 {
                     Console.WriteLine($"\n>> LOGGED OUT: {this.lastName}");

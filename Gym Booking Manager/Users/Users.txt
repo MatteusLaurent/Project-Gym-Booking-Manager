@@ -7,4 +7,4 @@ Customer;4;Per;Åhberg;780416-5984;070-6958411;per.ahberg@gmail.com;perahb;abc123
 Customer;5;Gustav;Persson;861124-5841;070-5661247;gustav.persson@gmail.com;gusper;abc123;0001-01-01 00:00:00;0001-01-01 00:00:00;False
 Customer;6;Fredrik;Stolt;860512-4521;073-5884625;fredrik.stolt@gmail.com;fresto;abc123;0001-01-01 00:00:00;0001-01-01 00:00:00;False
 Customer;7;Erik;Olofsson;920617-8956;070-8556123;erik.olofsson@gmail.com;eriolo;abc123;0001-01-01 00:00:00;0001-01-01 00:00:00;False
-Customer;8;Johan;Lustig;960514-1526;073-5842615;johan.lustig@gmail.com;johlus;abc123;0001-01-01 00:00:00;0001-01-01 00:00:00;False
+Customer;8;Johan;Lustig;960514-1526;073-5842615;johan.lustig@gmail.com;johlus;abc123;0001-01-01 00:00:00;0001-01-01 00:00:00;True

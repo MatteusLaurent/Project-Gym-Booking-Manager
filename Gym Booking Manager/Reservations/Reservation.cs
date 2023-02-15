@@ -58,6 +58,7 @@ namespace Gym_Booking_Manager.Reservations
                     {
                         reservables += $"{rvb.id},";
                     }
+                    reservables = reservables[0..^1];
                     writer.WriteLine($"{rsv.id};{rsv.owner.id};{rsv.date.timeFrom};{rsv.date.timeTo};{reservables}");
                 }
             }
@@ -112,7 +113,7 @@ namespace Gym_Booking_Manager.Reservations
 
             while (true)
             {
-                Console.WriteLine("Type in which equiment you wish to reserve: ");
+                Console.WriteLine("Type in which equiment/PT you wish to reserve(number): ");
                 string input = Console.ReadLine();
                 bool isNumber;
                 isNumber = int.TryParse(input, out int number);
@@ -120,7 +121,7 @@ namespace Gym_Booking_Manager.Reservations
                 {
                     list.Add(Reservable.reservables[ReservableToList[number - 1]]);
                     Console.WriteLine("You have booked " + Reservable.reservables[ReservableToList[number - 1]].name);
-                    reservations.Add(new Reservation(reservations.Count(), User.users[userID], new Calendar(date[0], date[1]), list));
+                    reservations.Add(new Reservation(GetID(), User.users[userID], new Calendar(date[0], date[1]), list));
                     SaveReservations();
                     break;
                 }
@@ -131,6 +132,28 @@ namespace Gym_Booking_Manager.Reservations
             }
         }
         public static void NewReservationStaff(int userID)
+        {
+            bool overlap = false;
+            List<int> reservableToList = new List<int>();
+            DateTime[] date = new DateTime[2];
+            EnterDate(date);
+            for (int i = 0; i < Reservable.reservables.Count(); i++)
+            {
+                overlap = false;
+                for (int j = 0; j < reservations.Count(); j++)
+                {
+                    for (int k = 0; k < reservations[j].reservables.Count(); k++)
+                    {
+                        if (i == reservations[j].reservables[k].id) overlap = date[0] < reservations[j].date.timeTo && reservations[j].date.timeFrom < date[1];
+                        if (overlap) break;
+                    }
+                    if (overlap) break;
+                }
+                if (!overlap) reservableToList.Add(Reservable.reservables[i].id);
+            }
+            ChooseReservation(reservableToList, userID, date);
+        }
+        public static void NewReservationUserMember(int userID)
         {
             bool overlap = false;
             List<int> ReservableToList = new List<int>();
@@ -148,9 +171,42 @@ namespace Gym_Booking_Manager.Reservations
                     }
                     if (overlap) break;
                 }
-                if (!overlap) ReservableToList.Add(Reservable.reservables[i].id);
+                if (!overlap && Reservable.reservables[i] is not Space) ReservableToList.Add(Reservable.reservables[i].id);
             }
             ChooseReservation(ReservableToList, userID, date);
+        }
+        public static void NewReservationUserNonMember(int userID)
+        {
+            bool overlap = false;
+            List<int> ReservableToList = new List<int>();
+            DateTime[] date = new DateTime[2];
+            EnterDate(date);
+            for (int i = 0; i < Reservable.reservables.Count(); i++)
+            {
+                overlap = false;
+                for (int j = 0; j < reservations.Count(); j++)
+                {
+                    for (int k = 0; k < reservations[j].reservables.Count(); k++)
+                    {
+                        if (i == reservations[j].reservables[k].id) overlap = date[0] < reservations[j].date.timeTo && reservations[j].date.timeFrom < date[1];
+                        if (overlap) break;
+                    }
+                    if (overlap) break;
+                }
+                if (!overlap && Reservable.reservables[i] is PTrainer) ReservableToList.Add(Reservable.reservables[i].id);
+                if (!overlap && Reservable.reservables[i] is Equipment)
+                {
+                    Equipment equipment = (Equipment)Reservable.reservables[i];
+                    if(equipment.bookable==true)ReservableToList.Add(Reservable.reservables[i].id);
+                }
+            }
+            ChooseReservation(ReservableToList, userID, date);
+        }
+        public static int GetID()
+        {
+            int id = getReservationID;
+            getReservationID++;
+            return id;
         }
         public void NewReservation()
         {
@@ -167,13 +223,13 @@ namespace Gym_Booking_Manager.Reservations
     }
     public class Reservable
     {
-        public static int reservableID;
+        public static int getReservablesID;
         public static List<Reservable> reservables = new List<Reservable>();
 
         public int id { get; set; }
         public string name { get; set; }
         public string description { get; set; }
-        public List<Reservation> reservations { get; set; }
+        public static List<Reservation> reservations { get; set; }
         public Reservable(int id, string name, string description)
         {
             this.id = id;
@@ -183,7 +239,7 @@ namespace Gym_Booking_Manager.Reservations
         public static void LoadReservables()
         {
             string[] lines = File.ReadAllLines("Reservations/Reservables.txt");
-            reservableID = int.Parse(lines[0]);
+            getReservablesID = int.Parse(lines[0]);
 
             for (int i = 1; i < lines.Length; i++)
             {
@@ -210,21 +266,22 @@ namespace Gym_Booking_Manager.Reservations
         {
             using (StreamWriter writer = new StreamWriter("Reservations/Reservables.txt", false))
             {
-                foreach (Reservable r in reservables)
+                writer.WriteLine(getReservablesID);
+                for (int i = 0; i < reservables.Count; i++)
                 {
-                    if (r is Equipment)
+                    if (reservables[i] is Equipment)
                     {
-                        Equipment equipment = (Equipment)r;
+                        Equipment equipment = (Equipment)reservables[i];
                         writer.WriteLine($"Equipment;{equipment.id};{equipment.name};{equipment.description};{equipment.bookable}");
                     }
-                    if (r is Space)
+                    if (reservables[i] is Space)
                     {
-                        Space space = (Space)r;
+                        Space space = (Space)reservables[i];
                         writer.WriteLine($"Space;{space.id};{space.name};{space.description};{space.capacity}");
                     }
-                    if (r is PTrainer)
+                    if (reservables[i] is PTrainer)
                     {
-                        PTrainer ptrainer = (PTrainer)r;
+                        PTrainer ptrainer = (PTrainer)reservables[i];
                         writer.WriteLine($"PTrainer;{ptrainer.id};{ptrainer.name};{ptrainer.description};{ptrainer.instructor.id}");
                     }
                 }
@@ -256,8 +313,8 @@ namespace Gym_Booking_Manager.Reservations
         }
         public static int GetID()
         {
-            int id = reservableID;
-            reservableID++;
+            int id = getReservablesID;
+            getReservablesID++;
             return id;
         }
         public static void NewEquipment()

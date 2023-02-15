@@ -13,8 +13,7 @@ namespace Gym_Booking_Manager
             User.LoadUsers();
             Reservable.LoadReservables();
             Reservation.LoadReservations();
-            Activity.LoadActivities();
-
+            Activity.LoadActivities();            
             // MAIN SOFTWARE LOOP RUNS BELOW:
             RunGBM();
         }
@@ -22,11 +21,10 @@ namespace Gym_Booking_Manager
         {
             bool shutdown = false;
             int userID;
-            User? currentUser;
-
+            User? currentUser;            
             do
             {
-                Console.Clear();
+                Console.Clear();                
                 Console.WriteLine("<< GYM BOOKING MANAGER >>\n");
                 Console.WriteLine(">> Press any key to log in, or escape to quit!");
                 ConsoleKeyInfo keyInfo = Console.ReadKey(true);
