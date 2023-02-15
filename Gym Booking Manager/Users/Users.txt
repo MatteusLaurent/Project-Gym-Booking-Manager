@@ -1,9 +1,10 @@
-Admin;0;Kalle Karlsson;791222-1735;0121-131232;kalle.karlsson@gmail.com;kalkar;abc123
-Staff;1;Tony Pontare;840830-2348;0121-134562;tony.pontare@gmail.com;tonpon;abc123
-Staff;2;Roger Larsson;810228-2354;0121-45128;roger.larsson@gmail.com;roglar;abc123
-Customer;3;Karl Svensson;7312218-1836;0121-134332;karl.svensson@gmail.com;karsve;abc123;0001-01-01 00:00:00;0001-01-01 00:00:00;False
-Customer;4;Per Åhberg;780416-5984;070-6958411;per.ahberg@gmail.com;perahb;abc123;0001-01-01 00:00:00;0001-01-01 00:00:00;False
-Customer;5;Gustav Persson;861124-5841;070-5661247;gustav.persson@gmail.com;gusper;abc123;0001-01-01 00:00:00;0001-01-01 00:00:00;False
-Customer;6;Fredrik Stolt;860512-4521;073-5884625;fredrik.stolt@gmail.com;fresto;abc123;0001-01-01 00:00:00;0001-01-01 00:00:00;False
-Customer;7;Erik Olofsson;920617-8956;070-8556123;erik.olofsson@gmail.com;eriolo;abc123;0001-01-01 00:00:00;0001-01-01 00:00:00;False
-Customer;8;Johan Lustig;960514-1526;073-5842615;johan.lustig@gmail.com;johlus;abc123;0001-01-01 00:00:00;0001-01-01 00:00:00;False
+9
+Admin;0;System;Administrator;000000-0000;000-0000000;system.admin@admin.com;admin;admin123
+Staff;1;Tony;Pontare;840830-2348;0121-134562;tony.pontare@gmail.com;tonpon;abc123
+Staff;2;Roger;Larsson;810228-2354;0121-45128;roger.larsson@gmail.com;roglar;abc123
+Customer;3;Karl;Svensson;7312218-1836;0121-134332;karl.svensson@gmail.com;karsve;abc123;0001-01-01 00:00:00;0001-01-01 00:00:00;False
+Customer;4;Per;Åhberg;780416-5984;070-6958411;per.ahberg@gmail.com;perahb;abc123;0001-01-01 00:00:00;0001-01-01 00:00:00;False
+Customer;5;Gustav;Persson;861124-5841;070-5661247;gustav.persson@gmail.com;gusper;abc123;0001-01-01 00:00:00;0001-01-01 00:00:00;False
+Customer;6;Fredrik;Stolt;860512-4521;073-5884625;fredrik.stolt@gmail.com;fresto;abc123;0001-01-01 00:00:00;0001-01-01 00:00:00;False
+Customer;7;Erik;Olofsson;920617-8956;070-8556123;erik.olofsson@gmail.com;eriolo;abc123;0001-01-01 00:00:00;0001-01-01 00:00:00;False
+Customer;8;Johan;Lustig;960514-1526;073-5842615;johan.lustig@gmail.com;johlus;abc123;0001-01-01 00:00:00;0001-01-01 00:00:00;False

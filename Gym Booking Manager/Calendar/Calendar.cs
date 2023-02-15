@@ -1,9 +1,5 @@
 ﻿using Gym_Booking_Manager.Activities;
-using Gym_Booking_Manager.Reservations;
-using Gym_Booking_Manager.Users;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Reflection.Metadata;
 
 namespace Gym_Booking_Manager.Calendars
 {
@@ -11,7 +7,6 @@ namespace Gym_Booking_Manager.Calendars
     {
         public DateTime timeFrom { get; set; }
         public DateTime timeTo { get; set; }
-
         public Calendar(DateTime timeFrom, DateTime timeTo)
         {
             this.timeFrom = timeFrom;
@@ -23,7 +18,6 @@ namespace Gym_Booking_Manager.Calendars
 
             Console.Clear();
             Console.WriteLine($"<< ACTIVITY CALENDAR >>\n\n>> Select an option!\n{"- [1]",-8}View weekly calendar.\n{"- [2]",-8}View monthly calendar.\n{"- [ESC]",-8}Cancel.");
-
 
             keyPressed = Console.ReadKey(true);
             if (keyPressed.Key == ConsoleKey.D1 || keyPressed.Key == ConsoleKey.NumPad1)

@@ -4,10 +4,9 @@ using Gym_Booking_Manager.Reservations;
 
 namespace Gym_Booking_Manager
 {
-    
+
     internal class Program
     {
-        public static int activeUser = -1;
         static void Main(string[] args)
         {
             // LOAD DATA METHODS RUNS BELOW:
@@ -41,8 +40,13 @@ namespace Gym_Booking_Manager
                 else
                 {
                     userID = User.LogIn();
-                    currentUser = User.users.Find(u => u.id == userID);
-                    currentUser.Menu();
+                    if (userID != -1)
+                    {
+                        currentUser = User.users.Find(u => u.id == userID);
+                        currentUser.Menu();
+                    }
+                    else Console.WriteLine(">> Login failed!");
+                    
                 }
             } while (!shutdown);
         }
