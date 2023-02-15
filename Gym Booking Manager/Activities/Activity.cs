@@ -46,8 +46,7 @@ namespace Gym_Booking_Manager.Activities
                 string[] stringsB = stringsA[9].Split(",");
 
                 var participants = new List<Customer>();
-                
-                // Adding objects (Customer) from public list (User.users) to new list (participants) based on integers (User.id).
+
                 foreach (string strB in stringsB)
                 {
                     if(strB.Length>0)participants.Add((Customer)User.users.Find(user => user.id == int.Parse(strB)));
